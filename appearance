@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 7: Vocabulary - Describing People (Appearance)</title>
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --primary-light: #eff6ff;
+            --primary-dark: #1e40af;
+            --accent-blue: #3b82f6;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --success: #10b981;
+            --success-light: #d1fae5;
+            --error: #ef4444;
+            --error-light: #fee2e2;
+            --warning: #f59e0b;
+            --border-radius: 16px;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .nav-btn {
+            padding: 0.6rem 1rem;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--primary-light);
+            color: var(--primary-blue);
+        }
+
+        .nav-btn.active {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Global Progress Bar */
+        .progress-card {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .progress-bar-bg {
+            flex-grow: 1;
+            height: 12px;
+            background-color: #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: var(--primary-blue);
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        /* Views / Sections */
+        .view-section {
+            display: none;
+        }
+
+        .view-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Home View Cards */
+        .hero-banner {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-banner h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-banner p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .info-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ish-box {
+            background: #f0f9ff;
+            border-left: 4px solid var(--accent-blue);
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        /* Flashcard Component (Learn Mode) */
+        .flashcard-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .card-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            width: 100%;
+            max-width: 550px;
+            justify-content: space-between;
+        }
+
+        .category-filter {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            background: white;
+            font-weight: 600;
+            color: var(--text-dark);
+            outline: none;
+        }
+
+        .flashcard {
+            background: white;
+            width: 100%;
+            max-width: 550px;
+            min-height: 380px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .badge {
+            background-color: var(--primary-light);
+            color: var(--primary-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .btn-icon {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0.4rem;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+
+        .btn-icon:hover {
+            background-color: #f1f5f9;
+        }
+
+        .card-body {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .word-title {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .word-ipa {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .word-pos {
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .toggle-box {
+            background: #f8fafc;
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            margin-top: 0.8rem;
+            cursor: pointer;
+            border: 1px dashed #cbd5e1;
+            transition: background 0.2s;
+        }
+
+        .toggle-box:hover {
+            background: #f1f5f9;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background-color: #e2e8f0;
+            color: var(--text-dark);
+        }
+
+        .btn-secondary:hover {
+            background-color: #cbd5e1;
+        }
+
+        /* Practice Sub-nav & Modes */
+        .practice-tabs {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tab-btn {
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            white-space: nowrap;
+            color: var(--text-muted);
+        }
+
+        .tab-btn.active {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        .practice-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #e2e8f0;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .option-btn {
+            padding: 1rem;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+        }
+
+        .option-btn:hover {
+            background: var(--primary-light);
+            border-color: var(--accent-blue);
+        }
+
+        .option-btn.correct {
+            background: var(--success-light) !important;
+            border-color: var(--success) !important;
+            color: #065f46;
+        }
+
+        .option-btn.wrong {
+            background: var(--error-light) !important;
+            border-color: var(--error) !important;
+            color: #991b1b;
+        }
+
+        /* Matching Game */
+        .match-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .match-column {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .match-card {
+            padding: 1rem;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            text-align: center;
+            user-select: none;
+        }
+
+        .match-card.selected {
+            border-color: var(--primary-blue);
+            background: var(--primary-light);
+        }
+
+        .match-card.matched {
+            visibility: hidden;
+        }
+
+        /* Quiz Styling */
+        .quiz-question-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .quiz-question-card h4 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .quiz-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .results-score-box {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+        }
+
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 1rem auto;
+            border: 4px solid var(--primary-blue);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 0.5rem; }
+            .options-grid { grid-template-columns: 1fr; }
+            .match-container { grid-template-columns: 1fr; }
+            .card-controls { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span>📚</span> Unit 7: Appearance (B1-B2)
+            </div>
+            <ul class="nav-links">
+                <li><button class="nav-btn active" onclick="switchNav('home')">🏠 Home</button></li>
+                <li><button class="nav-btn" onclick="switchNav('learn')">📚 Learn</button></li>
+                <li><button class="nav-btn" onclick="switchNav('practice')">🎮 Practice</button></li>
+                <li><button class="nav-btn" onclick="switchNav('quiz')">🧠 Mini Quiz</button></li>
+                <li><button class="nav-btn" onclick="switchNav('describer')">👤 Character Creator</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Progress Overview -->
+        <div class="progress-card">
+            <span style="font-weight: 700; color: var(--text-dark);">Overall Unit Progress:</span>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="globalProgressBar"></div>
+            </div>
+            <span id="progressText" style="font-weight: 700; color: var(--primary-blue);">0%</span>
+        </div>
+
+        <!-- 1. HOME VIEW -->
+        <section id="homeView" class="view-section active">
+            <div class="hero-banner">
+                <h1>Describing People: Appearance</h1>
+                <p>Master 49 essential English words & expressions to describe hair, face, complexion, build, and overall appearance at B1–B2 level.</p>
+            </div>
+
+            <div class="section-grid">
+                <div class="info-card">
+                    <h3>📌 Hair, Face & Skin</h3>
+                    <p>Learn terms like <i>receding hair, crew-cut, freckles, chubby face, auburn hair,</i> and <i>getting a tan</i>.</p>
+                </div>
+                <div class="info-card">
+                    <h3>📌 Height & Build</h3>
+                    <p>Understand physical descriptions such as <i>stocky, well-built, plump, slender/slim,</i> vs <i>skinny</i>.</p>
+                </div>
+                <div class="info-card">
+                    <h3>📌 General Appearance</h3>
+                    <p>Express first impressions using <i>smart, elegant, stunning, scruffy, untidy-looking,</i> and <i>handsome</i>.</p>
+                </div>
+            </div>
+
+            <div class="ish-box">
+                <h3>💡 Language Help: The Suffix "-ish"</h3>
+                <p>In informal English, adding <b>-ish</b> to adjectives or numbers means <i>"approximately"</i> or <i>"somewhat"</i>:</p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li><b>tallish</b> = rather / fairly tall</li>
+                    <li><b>brownish hair</b> = hair that is somewhat brown</li>
+                    <li><b>thirtyish</b> = approximately thirty years old</li>
+                    <li><b>in his thirties</b> = aged between 30 and 39</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. LEARN VIEW (FLASHCARDS) -->
+        <section id="learnView" class="view-section">
+            <div class="flashcard-wrapper">
+                <div class="card-controls">
+                    <select class="category-filter" id="categorySelect" onchange="filterCategory()">
+                        <option value="ALL">All Categories (49)</option>
+                        <option value="Hair">Hair</option>
+                        <option value="Face">Face</option>
+                        <option value="Skin / Complexion">Skin & Complexion</option>
+                        <option value="Build">Height & Build</option>
+                        <option value="General Appearance">General Appearance</option>
+                        <option value="FAV">⭐ Favorites (<span id="favCount">0</span>)</option>
+                    </select>
+                    <span style="font-weight: bold; color: var(--text-muted);" id="cardCounter">Card 1 / 49</span>
+                </div>
+
+                <div class="flashcard" id="flashcard">
+                    <div class="card-header">
+                        <span class="badge" id="cardCategory">Hair</span>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <button class="btn-icon" onclick="speakCurrentWord()" title="Listen Pronunciation">🔊</button>
+                            <button class="btn-icon" id="favBtn" onclick="toggleFavorite()" title="Add to Favorites">⭐</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-icon" id="cardIcon">💇‍♀️</div>
+                        <h2 class="word-title" id="cardWord">straight hair</h2>
+                        <div class="word-ipa" id="cardIpa">/streɪt heə(r)/</div>
+                        <div class="word-pos" id="cardPos">noun phrase</div>
+
+                        <div class="toggle-box" onclick="toggleMeaning()">
+                            <small style="color: var(--text-muted); display: block;">Vietnamese Meaning (Click to toggle):</small>
+                            <strong id="cardVn" style="font-size: 1.1rem; color: var(--primary-dark);">tóc thẳng</strong>
+                        </div>
+
+                        <div style="margin-top: 1rem; text-align: left;">
+                            <p style="font-size: 0.95rem; margin-bottom: 0.3rem;"><b>Definition:</b> <span id="cardDef">hair that is not curly or wavy</span></p>
+                            <p style="font-size: 0.95rem; color: #334155;"><b>Example:</b> <i id="cardEx">"She has long, straight hair."</i></p>
+                            <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.2rem;" id="cardExVn">"Cô ấy có mái tóc dài và thẳng."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button class="btn-secondary" onclick="prevCard()">⬅️ Previous</button>
+                    <button class="btn-primary" onclick="nextCard()">Next ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PRACTICE VIEW (MODES 2-7) -->
+        <section id="practiceView" class="view-section">
+            <div class="practice-tabs">
+                <button class="tab-btn active" onclick="switchPracticeMode('mode2')">Mode 2: Match</button>
+                <button class="tab-btn" onclick="switchPracticeMode('mode3')">Mode 3: Choose Word</button>
+                <button class="tab-btn" onclick="switchPracticeMode('mode4')">Mode 4: Complete Sentence</button>
+                <button class="tab-btn" onclick="switchPracticeMode('mode5')">Mode 5: Detective</button>
+                <button class="tab-btn" onclick="switchPracticeMode('mode6')">Mode 6: Categories</button>
+                <button class="tab-btn" onclick="switchPracticeMode('mode7')">Mode 7: Nuance Challenge</button>
+            </div>
+
+            <!-- MODE 2: MATCHING -->
+            <div id="mode2" class="practice-card practice-submode">
+                <h3 style="margin-bottom: 1rem; color: var(--primary-dark);">Drag / Click Matching Game</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Pair each English term with its correct Vietnamese meaning.</p>
+                <div class="match-container" id="matchContainer">
+                    <div class="match-column" id="matchWords"></div>
+                    <div class="match-column" id="matchMeanings"></div>
+                </div>
+                <div style="margin-top: 1.5rem; text-align: right;">
+                    <button class="btn-primary" onclick="initMatchGame()">🔄 Reset Match Game</button>
+                </div>
+            </div>
+
+            <!-- MODE 3: CHOOSE WORD -->
+            <div id="mode3" class="practice-card practice-submode" style="display:none;">
+                <h3 style="margin-bottom: 0.5rem; color: var(--primary-dark);">Choose the Correct Word</h3>
+                <p id="mode3Question" style="font-size: 1.2rem; font-weight: 600; margin: 1.5rem 0; padding: 1rem; background: var(--primary-light); border-radius: 8px;"></p>
+                <div class="options-grid" id="mode3Options"></div>
+                <div id="mode3Feedback" style="margin-top: 1rem; font-weight: bold; min-height: 24px;"></div>
+                <button class="btn-primary" style="margin-top: 1.5rem;" onclick="generateMode3()">Next Question ➡️</button>
+            </div>
+
+            <!-- MODE 4: FILL IN BLANK -->
+            <div id="mode4" class="practice-card practice-submode" style="display:none;">
+                <h3 style="margin-bottom: 1rem; color: var(--primary-dark);">Complete the Sentence</h3>
+                <p id="mode4Sentence" style="font-size: 1.2rem; margin-bottom: 1.5rem; line-height: 1.8;"></p>
+                <input type="text" id="mode4Input" class="quiz-input" placeholder="Type the missing word here..." autocomplete="off">
+                <div style="margin-top: 1rem; display: flex; gap: 1rem; align-items: center;">
+                    <button class="btn-primary" onclick="checkMode4()">Check Answer</button>
+                    <button class="btn-secondary" onclick="generateMode4()">Skip / Next</button>
+                </div>
+                <div id="mode4Feedback" style="margin-top: 1rem; font-weight: bold;"></div>
+            </div>
+
+            <!-- MODE 5: APPEARANCE DETECTIVE -->
+            <div id="mode5" class="practice-card practice-submode" style="display:none;">
+                <h3 style="margin-bottom: 0.5rem; color: var(--primary-dark);">🕵️‍♂️ Appearance Detective</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Examine the suspect profile and check ALL vocabulary items that accurately describe them.</p>
+                
+                <div style="display: flex; gap: 1.5rem; background: #f8fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;" id="detectiveProfile">
+                    <!-- Profile JS generated -->
+                </div>
+                <div id="detectiveCheckboxes" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem;"></div>
+                <div style="margin-top: 1.5rem;">
+                    <button class="btn-primary" onclick="checkDetective()">Verify Suspect Profile</button>
+                    <button class="btn-secondary" onclick="generateDetectiveCase()">Next Case 🔍</button>
+                </div>
+                <div id="detectiveFeedback" style="margin-top: 1rem; font-weight: bold;"></div>
+            </div>
+
+            <!-- MODE 6: WORD CATEGORIES -->
+            <div id="mode6" class="practice-card practice-submode" style="display:none;">
+                <h3 style="margin-bottom: 1rem; color: var(--primary-dark);">Categorize the Word</h3>
+                <p style="text-align: center; font-size: 1.5rem; font-weight: 700; color: var(--primary-blue); margin: 1rem 0;" id="mode6Word"></p>
+                <p style="text-align: center; color: var(--text-muted); margin-bottom: 1.5rem;">Which category does this term belong to?</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem;" id="mode6Btns">
+                    <button class="btn-secondary" onclick="checkMode6('Hair')">💇‍♀️ Hair</button>
+                    <button class="btn-secondary" onclick="checkMode6('Face')">👤 Face</button>
+                    <button class="btn-secondary" onclick="checkMode6('Skin / Complexion')">✨ Skin / Complexion</button>
+                    <button class="btn-secondary" onclick="checkMode6('Height')">📏 Height</button>
+                    <button class="btn-secondary" onclick="checkMode6('Build')">🏋️‍♂️ Build</button>
+                    <button class="btn-secondary" onclick="checkMode6('General Appearance')">👔 General Appearance</button>
+                </div>
+                <div id="mode6Feedback" style="margin-top: 1.5rem; text-align: center; font-weight: bold;"></div>
+            </div>
+
+            <!-- MODE 7: SIMILAR WORDS CHALLENGE -->
+            <div id="mode7" class="practice-card practice-submode" style="display:none;">
+                <h3 style="margin-bottom: 1rem; color: var(--primary-dark);">Similar Words & Nuances Challenge</h3>
+                <div style="background: #f0f9ff; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;" id="nuanceExpl">
+                    <!-- Nuance explanation injected here -->
+                </div>
+                <p id="nuanceQuestion" style="font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem;"></p>
+                <div class="options-grid" id="nuanceOptions"></div>
+                <div id="nuanceFeedback" style="margin-top: 1rem; font-weight: bold;"></div>
+                <button class="btn-primary" style="margin-top: 1.5rem;" onclick="nextNuance()">Next Distinction ➡️</button>
+            </div>
+        </section>
+
+        <!-- 4. MINI QUIZ VIEW -->
+        <section id="quizView" class="view-section">
+            <div class="practice-card">
+                <h2 style="color: var(--primary-dark); margin-bottom: 0.5rem;">Unit 7 Assessment Quiz</h2>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">20 questions covering all vocabulary items, definitions, and usage. Submit when ready to see your score & feedback.</p>
+
+                <form id="quizForm" onsubmit="submitQuiz(event)">
+                    <div id="quizQuestionsContainer"></div>
+                    <button type="submit" class="btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">Submit Assessment 🚀</button>
+                </form>
+
+                <div id="quizResults" style="display: none; margin-top: 2rem;">
+                    <div class="results-score-box">
+                        <h3>Quiz Results</h3>
+                        <div class="score-circle" id="scoreCircle">0/20</div>
+                        <h4 id="scoreRating" style="font-size: 1.4rem; color: var(--primary-blue);">Excellent 🌟</h4>
+                        <p id="scorePercent" style="color: var(--text-muted); margin-top: 0.5rem;"></p>
+                        <button class="btn-primary" style="margin-top: 1.5rem;" onclick="restartQuiz()">Try Again 🔄</button>
+                    </div>
+                    <div id="quizBreakdown"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CHARACTER DESCRIBER -->
+        <section id="describerView" class="view-section">
+            <div class="practice-card">
+                <h2 style="color: var(--primary-dark); margin-bottom: 0.5rem;">👤 Interactive Character Describer</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Select vocabulary traits for each category to generate a fluent, natural B1–B2 description.</p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                    <div>
+                        <label style="font-weight: bold; display: block; margin-bottom: 0.3rem;">💇‍♀️ Hair:</label>
+                        <select id="descHair" class="category-filter" style="width:100%;">
+                            <option value="long, wavy auburn hair">long, wavy auburn hair</option>
+                            <option value="short curly black hair">short curly black hair</option>
+                            <option value="receding grey hair">receding grey hair</option>
+                            <option value="a fresh crew-cut">a fresh crew-cut</option>
+                            <option value="blonde straight hair">blonde straight hair</option>
+                            <option value="bald head">bald head</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label style="font-weight: bold; display: block; margin-bottom: 0.3rem;">👤 Face Features:</label>
+                        <select id="descFace" class="category-filter" style="width:100%;">
+                            <option value="a round face with freckles">a round face with freckles</option>
+                            <option value="a thin face with a beard">a thin face with a beard</option>
+                            <option value="a chubby face with light wrinkles">a chubby face with light wrinkles</option>
+                            <option value="a neat moustache">a neat moustache</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label style="font-weight: bold; display: block; margin-bottom: 0.3rem;">✨ Complexion:</label>
+                        <select id="descSkin" class="category-filter" style="width:100%;">
+                            <option value="fair skin">fair skin</option>
+                            <option value="getting a tan from the sun">getting a tan from the sun</option>
+                            <option value="a dark complexion">a dark complexion</option>
+                            <option value="slightly sunburnt skin">slightly sunburnt skin</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label style="font-weight: bold; display: block; margin-bottom: 0.3rem;">🏋️ Build & Height:</label>
+                        <select id="descBuild" class="category-filter" style="width:100%;">
+                            <option value="tallish and slim">tallish and slim</option>
+                            <option value="stocky and well-built">stocky and well-built</option>
+                            <option value="average height with a nice figure">average height with a nice figure</option>
+                            <option value="a bit plump and thirtyish">a bit plump and thirtyish</option>
+                            <option value="muscular and strong">muscular and strong</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label style="font-weight: bold; display: block; margin-bottom: 0.3rem;">👔 General Appearance:</label>
+                        <select id="descGeneral" class="category-filter" style="width:100%;">
+                            <option value="well-dressed and elegant">well-dressed and elegant</option>
+                            <option value="smart and handsome">smart and handsome</option>
+                            <option value="stunning and impressive">stunning and impressive</option>
+                            <option value="a bit scruffy and messy-looking">a bit scruffy and messy-looking</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="generateDescriptionParagraph()">Generate Description ✨</button>
+
+                <div id="descResultBox" style="display:none; margin-top: 1.5rem; padding: 1.5rem; background: var(--primary-light); border-radius: 12px; border-left: 5px solid var(--primary-blue);">
+                    <h3 style="color: var(--primary-dark); margin-bottom: 0.5rem;">Model Description:</h3>
+                    <p id="generatedParagraph" style="font-size: 1.15rem; line-height: 1.7; color: var(--text-dark);"></p>
+                    <button class="btn-secondary" style="margin-top: 1rem;" onclick="speakParagraph()">🔊 Read Aloud</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        /* ----------------------------------------------------
+           DATASET: ALL 49 VOCABULARY ITEMS (UNIT 7)
+        ---------------------------------------------------- */
+        const vocabularyData = [
+            // Hair, Face, Skin & Complexion
+            { id: 1, word: "straight hair", pos: "n phrase", ipa: "/streɪt heə(r)/", category: "Hair", vn: "tóc thẳng", def: "hair that is not curly or wavy", ex: "She has long, straight hair.", exVn: "Cô ấy có mái tóc dài và thẳng.", icon: "💇‍♀️" },
+            { id: 2, word: "thin-faced", pos: "adj", ipa: "/θɪn feɪst/", category: "Face", vn: "có khuôn mặt gầy", def: "having a narrow or thin face", ex: "He is a tall, thin-faced man.", exVn: "Ông ấy là một người đàn ông cao, mặt gầy.", icon: "👤" },
+            { id: 3, word: "a thin face", pos: "n phrase", ipa: "/ə θɪn feɪs/", category: "Face", vn: "một khuôn mặt gầy", def: "a face that lacks fat and is narrow", ex: "Illness left him with a thin face.", exVn: "Bệnh tật khiến anh ấy có một khuôn mặt gầy gò.", icon: "👤" },
+            { id: 4, word: "long, wavy hair", pos: "n phrase", ipa: "/lɒŋ ˈweɪvi heə(r)/", category: "Hair", vn: "tóc dài lượn sóng", def: "hair that is long and has slight curls or waves", ex: "She loves her long, wavy hair.", exVn: "Cô ấy rất thích mái tóc dài lượn sóng của mình.", icon: "👩" },
+            { id: 5, word: "round-faced", pos: "adj", ipa: "/raʊnd feɪst/", category: "Face", vn: "có khuôn mặt tròn", def: "having a face shaped like a circle", ex: "The round-faced child smiled sweetly.", exVn: "Đứa trẻ có khuôn mặt tròn mỉm cười ngọt ngào.", icon: "👶" },
+            { id: 6, word: "a round face", pos: "n phrase", ipa: "/ə raʊnd feɪs/", category: "Face", vn: "một khuôn mặt tròn", def: "a circular face shape", ex: "She has a friendly round face.", exVn: "Cô ấy có một khuôn mặt tròn thân thiện.", icon: "😊" },
+            { id: 7, word: "curly hair", pos: "n phrase", ipa: "/ˈkɜːli heə(r)/", category: "Hair", vn: "tóc xoăn", def: "hair forming tight curves or spirals", ex: "He was born with dark curly hair.", exVn: "Anh ấy sinh ra đã có mái tóc xoăn đen.", icon: "🧑‍🦱" },
+            { id: 8, word: "a crew-cut", pos: "n", ipa: "/ə ˈkruː kʌt/", category: "Hair", vn: "kiểu tóc húi cua", def: "a very short haircut for men", ex: "He decided to get a crew-cut for summer.", exVn: "Anh ấy quyết định cắt tóc húi cua cho mùa hè.", icon: "👨‍🦲" },
+            { id: 9, word: "bald", pos: "adj", ipa: "/bɔːld/", category: "Hair", vn: "hói, không có tóc", def: "having little or no hair on the head", ex: "My grandfather became completely bald at 50.", exVn: "Ông tôi bị hói hoàn toàn vào năm 50 tuổi.", icon: "👨‍🦲" },
+            { id: 10, word: "freckles", pos: "n pl", ipa: "/ˈfreklz/", category: "Skin / Complexion", vn: "tàn nhang", def: "small brown spots on the skin, often caused by the sun", ex: "She has cute freckles across her nose.", exVn: "Cô ấy có những đốm tàn nhang dễ thương trên mũi.", icon: "✨" },
+            { id: 11, word: "a beard", pos: "n", ipa: "/ə bɪəd/", category: "Face", vn: "râu (cằm)", def: "hair that grows on the chin and cheeks of a man's face", ex: "He grew a beard last winter.", exVn: "Anh ấy đã nuôi râu vào mùa đông năm ngoái.", icon: "🧔" },
+            { id: 12, word: "moustache", pos: "n", ipa: "/məˈstɑːʃ/", category: "Face", vn: "ria mép", def: "hair grown above the upper lip", ex: "He turned 30 and grew a moustache.", exVn: "Anh ấy tròn 30 tuổi và nuôi ria mép.", icon: "👨" },
+            { id: 13, word: "a chubby face", pos: "n phrase", ipa: "/ə ˈtʃʌbi feɪs/", category: "Face", vn: "khuôn mặt phúng phính", def: "a slightly fat and round face, often attractive", ex: "The baby has a chubby face and pink cheeks.", exVn: "Em bé có khuôn mặt phúng phính và đôi má hồng.", icon: "👶" },
+            { id: 14, word: "receding hair", pos: "n phrase", ipa: "/rɪˈsiːdɪŋ heə(r)/", category: "Hair", vn: "tóc hói dần ở đường viền trán", def: "hair that is stopping growing at the front of the head", ex: "He has receding hair at thirtyish.", exVn: "Anh ấy bị hói dần ở trán khi tầm ba mươi tuổi.", icon: "👴" },
+            { id: 15, word: "wrinkles", pos: "n pl", ipa: "/ˈrɪŋklz/", category: "Skin / Complexion", vn: "nếp nhăn", def: "lines on the skin caused by old age", ex: "She has fine wrinkles around her eyes when she laughs.", exVn: "Cô ấy có những nếp nhăn nhỏ quanh mắt khi cười.", icon: "👵" },
+            { id: 16, word: "black hair", pos: "n phrase", ipa: "/blæk heə(r)/", category: "Hair", vn: "tóc đen", def: "hair of the darkest color", ex: "Most Asian people naturally have black hair.", exVn: "Hầu hết người châu Á tự nhiên có mái tóc đen.", icon: "👩‍🦱" },
+            { id: 17, word: "grey hair", pos: "n phrase", ipa: "/ɡreɪ heə(r)/", category: "Hair", vn: "tóc bạc / xám", def: "hair that has lost its color, usually due to aging", ex: "His father developed grey hair early.", exVn: "Bố anh ấy có tóc bạc từ khá sớm.", icon: "👵" },
+            { id: 18, word: "blonde", pos: "adj / n", ipa: "/blɒnd/", category: "Hair", vn: "tóc vàng / người tóc vàng", def: "pale yellow hair", ex: "She has long blonde hair.", exVn: "Cô ấy có mái tóc vàng dài.", icon: "👱‍♀️" },
+            { id: 19, word: "fair", pos: "adj", ipa: "/feə(r)/", category: "Skin / Complexion", vn: "da trắng / tóc sáng màu", def: "having light-colored skin or hair", ex: "She has fair skin that burns easily in the sun.", exVn: "Cô ấy có làn da trắng dễ bị cháy nắng.", icon: "🏻" },
+            { id: 20, word: "dark", pos: "adj", ipa: "/dɑːk/", category: "Skin / Complexion", vn: "da ngăm / tóc tối màu", def: "having dark skin or hair", ex: "He has dark skin and brown eyes.", exVn: "Anh ấy có làn da ngăm và đôi mắt màu nâu.", icon: "🏽" },
+            { id: 21, word: "ginger-haired", pos: "adj", ipa: "/ˈdʒɪndʒə heəd/", category: "Hair", vn: "có tóc màu cam đỏ", def: "having red-orange hair", ex: "My cousin is a ginger-haired boy.", exVn: "Anh họ tôi là một cậu bé có mái tóc màu đỏ cam.", icon: "👩‍🦰" },
+            { id: 22, word: "red-haired", pos: "adj", ipa: "/red heəd/", category: "Hair", vn: "có tóc màu đỏ", def: "having reddish hair", ex: "She is a striking red-haired actress.", exVn: "Cô ấy là một nữ diễn viên nổi bật với mái tóc đỏ.", icon: "👩‍🦰" },
+            { id: 23, word: "auburn hair", pos: "n phrase", ipa: "/ˈɔːbən heə(r)/", category: "Hair", vn: "tóc màu nâu đỏ", def: "reddish-brown hair", ex: "Her auburn hair looked gorgeous in the sunlight.", exVn: "Mái tóc nâu đỏ của cô ấy trông tuyệt đẹp dưới ánh nắng.", icon: "👩‍🦰" },
+            { id: 24, word: "complexion", pos: "n", ipa: "/kəmˈplekʃn/", category: "Skin / Complexion", vn: "màu da, nước da", def: "the natural color and condition of skin on face", ex: "Healthy food gives you a clear complexion.", exVn: "Thực phẩm lành mạnh mang lại cho bạn một làn da sáng khỏe.", icon: "✨" },
+            { id: 25, word: "getting a tan", pos: "phrase", ipa: "/ˈɡetɪŋ ə tæn/", category: "Skin / Complexion", vn: "làm rám nắng", def: "when skin becomes darker from sunlight", ex: "She is lying on the beach getting a tan.", exVn: "Cô ấy đang nằm trên bãi biển để làm rám nắng.", icon: "☀️" },
+            { id: 26, word: "sunburnt", pos: "adj", ipa: "/ˈsʌnbɜːnt/", category: "Skin / Complexion", vn: "bị cháy nắng", def: "red and painful skin caused by too much sun", ex: "Put on sunblock so you don't get sunburnt.", exVn: "Thoa kem chống nắng để bạn không bị cháy nắng.", icon: "🥵" },
+
+            // Height and Build
+            { id: 27, word: "plump", pos: "adj", ipa: "/plʌmp/", category: "Build", vn: "đầy đặn, mập mạp (lịch sự)", def: "slightly fat in a pleasant and soft way", ex: "The baby has plump little arms.", exVn: "Em bé có đôi tay mập mạp đáng yêu.", icon: "🧸" },
+            { id: 28, word: "stout", pos: "adj", ipa: "/staʊt/", category: "Build", vn: "vạm vỡ, to béo nhẹ", def: "rather fat and solid in build", ex: "He is a stout, friendly old gentleman.", exVn: "Ông ấy là một vị quý ông cao tuổi to béo, thân thiện.", icon: "🧍‍♂️" },
+            { id: 29, word: "overweight", pos: "adj", ipa: "/ˌəʊvəˈweɪt/", category: "Build", vn: "thừa cân", def: "heavier than is healthy", ex: "The doctor advised him to lose weight as he was overweight.", exVn: "Bác sĩ khuyên anh ấy giảm cân vì anh ấy bị thừa cân.", icon: "⚖️" },
+            { id: 30, word: "stocky", pos: "adj", ipa: "/ˈstɒki/", category: "Build", vn: "vạm vỡ, chắc nịch", def: "broad and strong, often not very tall", ex: "He was stocky with broad shoulders.", exVn: "Anh ấy chắc nịch với bờ vai rộng.", icon: "🏋️‍♂️" },
+            { id: 31, word: "well-built", pos: "adj", ipa: "/ˌwel ˈbɪlt/", category: "Build", vn: "vạm vỡ, thân hình lực lưỡng", def: "having a solid, strong, and attractive body", ex: "He is a well-built athlete.", exVn: "Anh ấy là một vận động viên có thân hình lực lưỡng.", icon: "💪" },
+            { id: 32, word: "muscular", pos: "adj", ipa: "/ˈmʌskjələ(r)/", category: "Build", vn: "cơ bắp", def: "having strong and well-developed muscles", ex: "Gym workouts made him very muscular.", exVn: "Tập gym giúp anh ấy có cơ bắp săn chắc.", icon: "🏋️" },
+            { id: 33, word: "obese", pos: "adj", ipa: "/əʊˈbiːs/", category: "Build", vn: "béo phì (y học)", def: "extremely overweight in a way that is unhealthy", ex: "Obese patients need specialized healthcare.", exVn: "Bệnh nhân béo phì cần chăm sóc y tế chuyên biệt.", icon: "🏥" },
+            { id: 34, word: "slim", pos: "adj", ipa: "/slɪm/", category: "Build", vn: "thon thả, mảnh mai (đẹp)", def: "attractively thin", ex: "She stays slim by running every morning.", exVn: "Cô ấy giữ vóc dáng thon thả bằng cách chạy bộ mỗi sáng.", icon: "🧘‍♀️" },
+            { id: 35, word: "skinny", pos: "adj", ipa: "/ˈskɪni/", category: "Build", vn: "gầy giơ xương, quá gầy", def: "too thin in an unattractive way", ex: "He was so skinny his clothes hung loosely on him.", exVn: "Anh ấy gầy đến mức quần áo mặc rộng thùng thuồng.", icon: "🥢" },
+            { id: 36, word: "a nice figure", pos: "n phrase", ipa: "/ə naɪs ˈfɪɡə(r)/", category: "Build", vn: "vóc dáng đẹp", def: "an attractive body shape (usually women)", ex: "She exercises regularly to maintain a nice figure.", exVn: "Cô ấy tập thể dục thường xuyên để duy trì vóc dáng đẹp.", icon: "💃" },
+
+            // General Appearance
+            { id: 37, word: "smart", pos: "adj", ipa: "/smɑːt/", category: "General Appearance", vn: "gọn gàng, lịch sự, chỉn chu", def: "clean, tidy, and wearing stylish clothes", ex: "He looked smart in his new blue suit.", exVn: "Anh ấy trông rất lịch sự trong bộ suit xanh mới.", icon: "👔" },
+            { id: 38, word: "elegant", pos: "adj", ipa: "/ˈelɪɡənt/", category: "General Appearance", vn: "thanh lịch, trang nhã", def: "graceful and stylish in appearance or manner", ex: "She wore an elegant black evening gown.", exVn: "Cô ấy mặc một chiếc đầm dạ hội đen thanh lịch.", icon: "👗" },
+            { id: 39, word: "well-dressed", pos: "adj", ipa: "/ˌwel ˈdrest/", category: "General Appearance", vn: "ăn mặc đẹp", def: "wearing attractive and high-quality clothes", ex: "The interviewees were all well-dressed.", exVn: "Tất cả những người phỏng vấn đều ăn mặc đẹp.", icon: "👔" },
+            { id: 40, word: "scruffy", pos: "adj", ipa: "/ˈskrʌfi/", category: "General Appearance", vn: "lôi xôi, xộc xệch, bẩn thỉu", def: "untidy and looking uncared for", ex: "He wore a scruffy pair of old jeans.", exVn: "Anh ấy mặc một chiếc quần jeans cũ lôi xôi.", icon: "🧦" },
+            { id: 41, word: "untidy-looking", pos: "adj", ipa: "/ʌnˈtaɪdi ˈlʊkɪŋ/", category: "General Appearance", vn: "trông không gọn gàng", def: "not neat or well-arranged in appearance", ex: "An untidy-looking man asked for directions.", exVn: "Một người đàn ông trông không gọn gàng đã hỏi đường.", icon: "📦" },
+            { id: 42, word: "messy-looking", pos: "adj", ipa: "/ˈmesi ˈlʊkɪŋ/", category: "General Appearance", vn: "trông bừa bộn, rũ rượi", def: "dirty or disorderly appearance", ex: "He came into the room with messy-looking hair.", exVn: "Anh ấy bước vào phòng với mái tóc trông bù xù.", icon: "🧹" },
+            { id: 43, word: "stunning", pos: "adj", ipa: "/ˈstʌnɪŋ/", category: "General Appearance", vn: "lộng lẫy, cực kỳ xinh đẹp", def: "extremely attractive or beautiful", ex: "She looked absolutely stunning in her wedding dress.", exVn: "Cô ấy trông cực kỳ lộng lẫy trong chiếc váy cưới.", icon: "✨" },
+            { id: 44, word: "good-looking", pos: "adj", ipa: "/ˌɡʊd ˈlʊkɪŋ/", category: "General Appearance", vn: "ưa nhìn, đẹp (nam/nữ)", def: "physically attractive", ex: "They are a very good-looking couple.", exVn: "Họ là một cặp đôi rất đẹp đôi.", icon: "🌟" },
+            { id: 45, word: "unattractive", pos: "adj", ipa: "/ˌʌnəˈtræktɪv/", category: "General Appearance", vn: "không bắt mắt, kém hấp dẫn", def: "not pleasant to look at", ex: "The uniform was plain and unattractive.", exVn: "Bộ đồng phục thật đơn điệu và không bắt mắt.", icon: "😐" },
+            { id: 46, word: "feature", pos: "n", ipa: "/ˈfiːtʃə(r)/", category: "General Appearance", vn: "nét mặt, đặc điểm", def: "a noticeable part of the face (e.g., eyes, nose)", ex: "Her best feature is her bright blue eyes.", exVn: "Nét đẹp nhất của cô ấy là đôi mắt xanh sáng.", icon: "👁️" },
+            { id: 47, word: "handsome", pos: "adj", ipa: "/ˈhænsəm/", category: "General Appearance", vn: "đẹp trai (thường dùng cho nam)", def: "attractive (usually used for men)", ex: "He is a tall, handsome actor.", exVn: "Anh ấy là một diễn viên cao ráo, đẹp trai.", icon: "🕺" },
+            { id: 48, word: "personality", pos: "n", ipa: "/ˌpɜːsəˈnæləti/", category: "General Appearance", vn: "tính cách", def: "the combination of qualities that form a person's character", ex: "She has a warm and friendly personality.", exVn: "Cô ấy có một tính cách ấm áp và thân thiện.", icon: "💖" },
+            { id: 49, word: "first impressions", pos: "n pl", ipa: "/ˌfɜːst ɪmˈpreʃnz/", category: "General Appearance", vn: "ấn tượng đầu tiên", def: "the initial opinion formed about someone", ex: "First impressions are important in job interviews.", exVn: "Ấn tượng đầu tiên rất quan trọng trong các cuộc phỏng vấn xin việc.", icon: "🤝" }
+        ];
+
+        /* Nuance Challenge Data */
+        const nuanceData = [
+            {
+                expl: "<b>slim vs skinny:</b> Both mean thin, but <b>slim</b> is positive/attractive ('thon thả'), while <b>skinny</b> is negative ('gầy giơ xương').",
+                q: "Which word compliment someone for being pleasantly thin?",
+                opts: ["skinny", "slim", "obese", "stout"],
+                ans: "slim"
+            },
+            {
+                expl: "<b>plump vs overweight vs obese:</b> <b>Plump</b> is a polite, pleasant word for slightly fat ('mập mạp'). <b>Overweight</b> is neutral/medical. <b>Obese</b> is a medical term for dangerously fat.",
+                q: "What is a polite, gentle word to describe a soft, slightly fat baby or person?",
+                opts: ["obese", "overweight", "plump", "skinny"],
+                ans: "plump"
+            },
+            {
+                expl: "<b>smart vs well-dressed vs elegant:</b> <b>Smart</b> means tidy and formal. <b>Well-dressed</b> means wearing good clothes. <b>Elegant</b> means graceful, stylish, and dignified.",
+                q: "A person dressed in a graceful, sophisticated evening gown is best described as:",
+                opts: ["scruffy", "elegant", "untidy-looking", "stout"],
+                ans: "elegant"
+            },
+            {
+                expl: "<b>Grammar Note:</b> Adjectives vs Noun phrases.<br><b>thin-faced</b> (adj) -> 'He is thin-faced.'<br><b>a thin face</b> (noun) -> 'He has a thin face.'",
+                q: "Complete correctly: 'She is a ________ woman.'",
+                opts: ["a round face", "round-faced", "round face", "face round"],
+                ans: "round-faced"
+            }
+        ];
+
+        /* STATE VARIABLES */
+        let activeVocabList = [...vocabularyData];
+        let currentCardIdx = 0;
+        let favorites = JSON.parse(localStorage.getItem('unit7_favs') || '[]');
+        let selectedMatchWord = null;
+        let selectedMatchMeaning = null;
+        let nuanceIdx = 0;
+        let currentMode3Item = null;
+        let currentMode4Item = null;
+        let currentMode6Item = null;
+        let detectiveTarget = null;
+
+        /* INITIALIZATION */
+        window.onload = function() {
+            updateProgress();
+            renderCard();
+            initMatchGame();
+            generateMode3();
+            generateMode4();
+            generateDetectiveCase();
+            generateMode6();
+            renderNuance();
+            buildQuiz();
+        };
+
+        /* NAVIGATION & PROGRESS */
+        function switchNav(viewId) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+
+            document.getElementById(viewId + 'View').classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function updateProgress() {
+            const favRatio = (favorites.length / vocabularyData.length) * 100;
+            const progress = Math.min(100, Math.round(favRatio + 20)); // baseline progress
+            document.getElementById('globalProgressBar').style.width = progress + '%';
+            document.getElementById('progressText').innerText = progress + '%';
+            document.getElementById('favCount').innerText = favorites.length;
+        }
+
+        /* TEXT TO SPEECH */
+        function speakWord(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-GB';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Speech synthesis is not supported in this browser.");
+            }
+        }
+
+        function speakCurrentWord() {
+            const word = activeVocabList[currentCardIdx].word;
+            speakWord(word);
+        }
+
+        /* ----------------------------------------------------
+           MODE 1: LEARN (FLASHCARDS)
+        ---------------------------------------------------- */
+        function renderCard() {
+            if (activeVocabList.length === 0) {
+                document.getElementById('cardWord').innerText = "No items";
+                document.getElementById('cardIpa').innerText = "";
+                document.getElementById('cardVn').innerText = "";
+                return;
+            }
+
+            const item = activeVocabList[currentCardIdx];
+            document.getElementById('cardCategory').innerText = item.category;
+            document.getElementById('cardIcon').innerText = item.icon;
+            document.getElementById('cardWord').innerText = item.word;
+            document.getElementById('cardIpa').innerText = item.ipa;
+            document.getElementById('cardPos').innerText = item.pos;
+            document.getElementById('cardVn').innerText = item.vn;
+            document.getElementById('cardDef').innerText = item.def;
+            document.getElementById('cardEx').innerText = `"${item.ex}"`;
+            document.getElementById('cardExVn').innerText = `"${item.exVn}"`;
+
+            document.getElementById('cardCounter').innerText = `Card ${currentCardIdx + 1} / ${activeVocabList.length}`;
+
+            const isFav = favorites.includes(item.id);
+            document.getElementById('favBtn').innerText = isFav ? "⭐" : "☆";
+            document.getElementById('favBtn').style.color = isFav ? "#f59e0b" : "#64748b";
+        }
+
+        function nextCard() {
+            if (currentCardIdx < activeVocabList.length - 1) {
+                currentCardIdx++;
+                renderCard();
+            }
+        }
+
+        function prevCard() {
+            if (currentCardIdx > 0) {
+                currentCardIdx--;
+                renderCard();
+            }
+        }
+
+        function toggleMeaning() {
+            const vnEl = document.getElementById('cardVn');
+            vnEl.style.display = (vnEl.style.display === 'none') ? 'block' : 'none';
+        }
+
+        function toggleFavorite() {
+            const item = activeVocabList[currentCardIdx];
+            if (favorites.includes(item.id)) {
+                favorites = favorites.filter(id => id !== item.id);
+            } else {
+                favorites.push(item.id);
+            }
+            localStorage.setItem('unit7_favs', JSON.stringify(favorites));
+            updateProgress();
+            renderCard();
+        }
+
+        function filterCategory() {
+            const val = document.getElementById('categorySelect').value;
+            if (val === 'ALL') {
+                activeVocabList = [...vocabularyData];
+            } else if (val === 'FAV') {
+                activeVocabList = vocabularyData.filter(v => favorites.includes(v.id));
+            } else {
+                activeVocabList = vocabularyData.filter(v => v.category === val);
+            }
+            currentCardIdx = 0;
+            renderCard();
+        }
+
+        /* ----------------------------------------------------
+           PRACTICE MODES
+        ---------------------------------------------------- */
+        function switchPracticeMode(modeId) {
+            document.querySelectorAll('.practice-submode').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.practice-tabs .tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(modeId).style.display = 'block';
+            event.currentTarget.classList.add('active');
+        }
+
+        /* MODE 2: MATCHING GAME */
+        function initMatchGame() {
+            const matchWords = document.getElementById('matchWords');
+            const matchMeanings = document.getElementById('matchMeanings');
+            matchWords.innerHTML = '';
+            matchMeanings.innerHTML = '';
+
+            const shuffled = [...vocabularyData].sort(() => 0.5 - Math.random()).slice(0, 5);
+            const meaningsShuffled = [...shuffled].sort(() => 0.5 - Math.random());
+
+            selectedMatchWord = null;
+            selectedMatchMeaning = null;
+
+            shuffled.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'match-card';
+                card.dataset.id = item.id;
+                card.innerText = item.word;
+                card.onclick = () => selectMatchItem(card, 'word');
+                matchWords.appendChild(card);
+            });
+
+            meaningsShuffled.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'match-card';
+                card.dataset.id = item.id;
+                card.innerText = item.vn;
+                card.onclick = () => selectMatchItem(card, 'meaning');
+                matchMeanings.appendChild(card);
+            });
+        }
+
+        function selectMatchItem(card, type) {
+            if (card.classList.contains('matched')) return;
+
+            if (type === 'word') {
+                document.querySelectorAll('#matchWords .match-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                selectedMatchWord = card;
+            } else {
+                document.querySelectorAll('#matchMeanings .match-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                selectedMatchMeaning = card;
+            }
+
+            if (selectedMatchWord && selectedMatchMeaning) {
+                if (selectedMatchWord.dataset.id === selectedMatchMeaning.dataset.id) {
+                    selectedMatchWord.classList.add('matched');
+                    selectedMatchMeaning.classList.add('matched');
+                    selectedMatchWord = null;
+                    selectedMatchMeaning = null;
+                } else {
+                    alert("❌ Try again!");
+                    selectedMatchWord.classList.remove('selected');
+                    selectedMatchMeaning.classList.remove('selected');
+                    selectedMatchWord = null;
+                    selectedMatchMeaning = null;
+                }
+            }
+        }
+
+        /* MODE 3: CHOOSE THE CORRECT WORD */
+        function generateMode3() {
+            document.getElementById('mode3Feedback').innerText = '';
+            currentMode3Item = vocabularyData[Math.floor(Math.random() * vocabularyData.length)];
+            document.getElementById('mode3Question').innerText = `Definition: "${currentMode3Item.def}"`;
+
+            let options = [currentMode3Item];
+            while (options.length < 4) {
+                let rand = vocabularyData[Math.floor(Math.random() * vocabularyData.length)];
+                if (!options.find(o => o.id === rand.id)) options.push(rand);
+            }
+            options.sort(() => 0.5 - Math.random());
+
+            const optsGrid = document.getElementById('mode3Options');
+            optsGrid.innerHTML = '';
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = opt.word;
+                btn.onclick = () => {
+                    if (opt.id === currentMode3Item.id) {
+                        btn.classList.add('correct');
+                        document.getElementById('mode3Feedback').innerText = "✅ Correct!";
+                        document.getElementById('mode3Feedback').style.color = "var(--success)";
+                    } else {
+                        btn.classList.add('wrong');
+                        document.getElementById('mode3Feedback').innerText = `❌ Wrong! Correct answer: ${currentMode3Item.word}`;
+                        document.getElementById('mode3Feedback').style.color = "var(--error)";
+                    }
+                };
+                optsGrid.appendChild(btn);
+            });
+        }
+
+        /* MODE 4: COMPLETE SENTENCE */
+        function generateMode4() {
+            document.getElementById('mode4Feedback').innerText = '';
+            document.getElementById('mode4Input').value = '';
+            currentMode4Item = vocabularyData[Math.floor(Math.random() * vocabularyData.length)];
+
+            // Replace word in example sentence with blank
+            const sentenceWithBlank = currentMode4Item.ex.replace(new RegExp(currentMode4Item.word, 'gi'), '__________');
+            document.getElementById('mode4Sentence').innerHTML = `"${sentenceWithBlank}"<br><small style="color:var(--text-muted);">Vietnamese hint: ${currentMode4Item.vn}</small>`;
+        }
+
+        function checkMode4() {
+            const input = document.getElementById('mode4Input').value.trim().toLowerCase();
+            const target = currentMode4Item.word.toLowerCase();
+
+            if (input === target) {
+                document.getElementById('mode4Feedback').innerText = "✅ Correct!";
+                document.getElementById('mode4Feedback').style.color = "var(--success)";
+            } else {
+                document.getElementById('mode4Feedback').innerText = `❌ Try again! Correct word: "${currentMode4Item.word}"`;
+                document.getElementById('mode4Feedback').style.color = "var(--error)";
+            }
+        }
+
+        /* MODE 5: APPEARANCE DETECTIVE */
+        const detectiveCases = [
+            {
+                name: "Suspect A - Mark",
+                img: "🧔‍♂️",
+                desc: "Mark is 35 years old. His hair is disappearing at the front. He works out every day, wears neat suits to work, and has hair on his chin.",
+                correct: ["receding hair", "muscular", "smart", "a beard"]
+            },
+            {
+                name: "Suspect B - Emma",
+                img: "👱‍♀️",
+                desc: "Emma has pale yellow hair with loose waves. She has tiny brown spots on her face from the sun and is attractively thin.",
+                correct: ["blonde", "freckles", "slim"]
+            }
+        ];
+
+        function generateDetectiveCase() {
+            document.getElementById('detectiveFeedback').innerText = '';
+            detectiveTarget = detectiveCases[Math.floor(Math.random() * detectiveCases.length)];
+
+            document.getElementById('detectiveProfile').innerHTML = `
+                <div style="font-size:4rem;">${detectiveTarget.img}</div>
+                <div>
+                    <h4 style="color:var(--primary-dark); font-size:1.2rem;">${detectiveTarget.name}</h4>
+                    <p style="margin-top:0.3rem;">${detectiveTarget.desc}</p>
+                </div>
+            `;
+
+            const container = document.getElementById('detectiveCheckboxes');
+            container.innerHTML = '';
+
+            let allChoices = [...detectiveTarget.correct, "bald", "scruffy", "obese", "a crew-cut"];
+            allChoices = [...new Set(allChoices)].sort(() => 0.5 - Math.random());
+
+            allChoices.forEach(item => {
+                const label = document.createElement('label');
+                label.style.display = "flex";
+                label.style.alignItems = "center";
+                label.style.gap = "0.5rem";
+                label.style.background = "#fff";
+                label.style.padding = "0.5rem 0.8rem";
+                label.style.borderRadius = "6px";
+                label.style.border = "1px solid #cbd5e1";
+                label.innerHTML = `<input type="checkbox" value="${item}"> ${item}`;
+                container.appendChild(label);
+            });
+        }
+
+        function checkDetective() {
+            const checked = Array.from(document.querySelectorAll('#detectiveCheckboxes input:checked')).map(c => c.value);
+            const isCorrect = detectiveTarget.correct.every(val => checked.includes(val)) && checked.length === detectiveTarget.correct.length;
+
+            if (isCorrect) {
+                document.getElementById('detectiveFeedback').innerText = "✅ Excellent Detective Work! You identified all correct traits!";
+                document.getElementById('detectiveFeedback').style.color = "var(--success)";
+            } else {
+                document.getElementById('detectiveFeedback').innerText = `❌ Incorrect tags. Expected: ${detectiveTarget.correct.join(', ')}`;
+                document.getElementById('detectiveFeedback').style.color = "var(--error)";
+            }
+        }
+
+        /* MODE 6: WORD CATEGORIES */
+        function generateMode6() {
+            document.getElementById('mode6Feedback').innerText = '';
+            currentMode6Item = vocabularyData[Math.floor(Math.random() * vocabularyData.length)];
+            document.getElementById('mode6Word').innerText = currentMode6Item.word;
+        }
+
+        function checkMode6(cat) {
+            let actualCategory = currentMode6Item.category;
+            // standardizing height/build
+            if (actualCategory === "Build" && (cat === "Height" || cat === "Build")) actualCategory = cat;
+
+            if (currentMode6Item.category.includes(cat) || actualCategory === cat) {
+                document.getElementById('mode6Feedback').innerText = `✅ Correct! "${currentMode6Item.word}" belongs to ${currentMode6Item.category}`;
+                document.getElementById('mode6Feedback').style.color = "var(--success)";
+                setTimeout(generateMode6, 1500);
+            } else {
+                document.getElementById('mode6Feedback').innerText = `❌ Try again! Correct category: ${currentMode6Item.category}`;
+                document.getElementById('mode6Feedback').style.color = "var(--error)";
+            }
+        }
+
+        /* MODE 7: NUANCE CHALLENGE */
+        function renderNuance() {
+            document.getElementById('nuanceFeedback').innerText = '';
+            const item = nuanceData[nuanceIdx];
+            document.getElementById('nuanceExpl').innerHTML = item.expl;
+            document.getElementById('nuanceQuestion').innerText = item.q;
+
+            const grid = document.getElementById('nuanceOptions');
+            grid.innerHTML = '';
+
+            item.opts.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = opt;
+                btn.onclick = () => {
+                    if (opt === item.ans) {
+                        btn.classList.add('correct');
+                        document.getElementById('nuanceFeedback').innerText = "✅ Correct!";
+                        document.getElementById('nuanceFeedback').style.color = "var(--success)";
+                    } else {
+                        btn.classList.add('wrong');
+                        document.getElementById('nuanceFeedback').innerText = `❌ Incorrect. The answer is ${item.ans}`;
+                        document.getElementById('nuanceFeedback').style.color = "var(--error)";
+                    }
+                };
+                grid.appendChild(btn);
+            });
+        }
+
+        function nextNuance() {
+            nuanceIdx = (nuanceIdx + 1) % nuanceData.length;
+            renderNuance();
+        }
+
+        /* ----------------------------------------------------
+           QUIZ ASSESSMENT SYSTEM (20 QUESTIONS)
+        ---------------------------------------------------- */
+        const quizQuestions = [
+            { id: 1, type: "mcq", q: "1. What does 'receding hair' mean?", opts: ["Hair that is very thick", "Hair disappearing at the front of the head", "Hair dyed in bright red", "Curly hair"], ans: "Hair disappearing at the front of the head", expl: "Receding hair stops growing at the forehead line." },
+            { id: 2, type: "mcq", q: "2. Which adjective describes someone attractively thin?", opts: ["skinny", "slim", "obese", "stout"], ans: "slim", expl: "'Slim' is positive ('thon thả'), while 'skinny' is negative ('gầy giơ xương')." },
+            { id: 3, type: "fill", q: "3. Complete: She has cute small brown spots on her skin from the sun called ________.", ans: "freckles", expl: "Freckles are small brown spots on the skin." },
+            { id: 4, type: "mcq", q: "4. What haircut is very short and often worn by men?", opts: ["a crew-cut", "long wavy hair", "auburn hair", "wrinkles"], ans: "a crew-cut", expl: "A crew-cut is a short male hairstyle." },
+            { id: 5, type: "mcq", q: "5. 'Auburn hair' refers to what color?", opts: ["Dark blue", "Reddish-brown", "Pale yellow", "Pure white"], ans: "Reddish-brown", expl: "Auburn means reddish-brown hair." },
+            { id: 6, type: "fill", q: "6. Fill in the missing word: 'He is thirtyish, meaning he is in his ________.'", ans: "thirties", expl: "Thirtyish means in his thirties (between 30 and 39)." },
+            { id: 7, type: "mcq", q: "7. Which of the following is the opposite of 'well-dressed / smart'?", opts: ["elegant", "scruffy", "stunning", "handsome"], ans: "scruffy", expl: "Scruffy means untidy and dirty looking." },
+            { id: 8, type: "mcq", q: "8. What happens to skin when it is severely burnt by sun?", opts: ["It becomes sunburnt", "It becomes stocky", "It becomes plump", "It becomes blonde"], ans: "It becomes sunburnt", expl: "Sunburnt refers to painful red skin from excessive sun exposure." },
+            { id: 9, type: "mcq", q: "9. 'Plump' is a polite word for:", opts: ["Extremely thin", "Slightly fat in a soft pleasant way", "Very tall", "Muscular"], ans: "Slightly fat in a soft pleasant way", expl: "'Plump' politely describes a pleasantly soft figure." },
+            { id: 10, type: "fill", q: "10. 'His hair is neither curly nor wavy; it is ________.'", ans: "straight", expl: "Straight hair is hair without curls or waves." },
+            { id: 11, type: "mcq", q: "11. Choose the grammatically correct adjective: 'He is a ________ man.'", opts: ["round-faced", "a round face", "round face", "face round"], ans: "round-faced", expl: "'round-faced' is a hyphenated adjective." },
+            { id: 12, type: "mcq", q: "12. What does the suffix '-ish' mean in 'tallish'?", opts: ["Very/extremely", "Somewhat / fairly", "Not at all", "Exactly"], ans: "Somewhat / fairly", expl: "-ish means approximately or somewhat." },
+            { id: 13, type: "fill", q: "13. Complete: Healthy food gives you a clear facial skin, also known as a clear ________.", ans: "complexion", expl: "Complexion refers to the skin condition on the face." },
+            { id: 14, type: "mcq", q: "14. 'Stunning' is closest in meaning to:", opts: ["unattractive", "extremely beautiful", "untidy", "skinny"], ans: "extremely beautiful", expl: "Stunning means remarkably beautiful." },
+            { id: 15, type: "mcq", q: "15. Which word is used specifically to describe an attractive man?", opts: ["handsome", "a nice figure", "blonde", "plump"], ans: "handsome", expl: "'Handsome' is typically used for handsome men." },
+            { id: 16, type: "fill", q: "16. Facial hair grown on the chin and cheeks of a man's face is a ________.", ans: "beard", expl: "A beard is facial hair on chin/cheeks." },
+            { id: 17, type: "mcq", q: "17. 'Getting a tan' means:", opts: ["Losing weight", "Skin turning darker from sunlight", "Cutting hair short", "Getting old wrinkles"], ans: "Skin turning darker from sunlight", expl: "Getting a tan is darkening of the skin in the sun." },
+            { id: 18, type: "fill", q: "18. A broad, strong person who is not very tall is described as ________.", ans: "stocky", expl: "Stocky means broad and solid build." },
+            { id: 19, type: "mcq", q: "19. The initial opinion you form when meeting someone is called:", opts: ["first impressions", "personality", "feature", "complexion"], ans: "first impressions", expl: "First impressions are initial opinions formed." },
+            { id: 20, type: "mcq", q: "20. 'Untidy-looking' is synonymous with:", opts: ["messy-looking", "smart", "elegant", "well-built"], ans: "messy-looking", expl: "Both mean disorderly or unkempt in appearance." }
+        ];
+
+        function buildQuiz() {
+            const container = document.getElementById('quizQuestionsContainer');
+            container.innerHTML = '';
+
+            quizQuestions.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = 'quiz-question-card';
+
+                if (item.type === 'mcq') {
+                    let optsHtml = item.opts.map(o => `
+                        <label style="display:block; margin:0.4rem 0; cursor:pointer;">
+                            <input type="radio" name="q${idx}" value="${o}" required> ${o}
+                        </label>
+                    `).join('');
+                    card.innerHTML = `<h4>${item.q}</h4>${optsHtml}`;
+                } else {
+                    card.innerHTML = `
+                        <h4>${item.q}</h4>
+                        <input type="text" class="quiz-input" name="q${idx}" required placeholder="Type answer...">
+                    `;
+                }
+                container.appendChild(card);
+            });
+        }
+
+        function submitQuiz(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            let score = 0;
+            let breakdownHtml = '<h4 style="margin-bottom:1rem;">Detailed Breakdown:</h4>';
+
+            quizQuestions.forEach((item, idx) => {
+                const userAns = (formData.get(`q${idx}`) || '').trim();
+                const isCorrect = userAns.toLowerCase() === item.ans.toLowerCase();
+
+                if (isCorrect) score++;
+
+                breakdownHtml += `
+                    <div style="padding:1rem; border-radius:8px; margin-bottom:0.75rem; background: ${isCorrect ? 'var(--success-light)' : 'var(--error-light)'};">
+                        <p style="font-weight:bold;">${item.q}</p>
+                        <p>Your answer: <b>${userAns || 'None'}</b> ${isCorrect ? '✅' : '❌'}</p>
+                        ${!isCorrect ? `<p>Correct answer: <b style="color:var(--success);">${item.ans}</b></p>` : ''}
+                        <small style="color:var(--text-muted); display:block; margin-top:0.2rem;">Explanation: ${item.expl}</small>
+                    </div>
+                `;
+            });
+
+            const percent = Math.round((score / quizQuestions.length) * 100);
+            document.getElementById('scoreCircle').innerText = `${score}/20`;
+            document.getElementById('scorePercent').innerText = `${percent}% Correct`;
+
+            let rating = "";
+            if (percent >= 90) rating = "Excellent 🌟";
+            else if (percent >= 80) rating = "Very Good 👍";
+            else if (percent >= 70) rating = "Good 😊";
+            else if (percent >= 60) rating = "Keep Practising 💪";
+            else rating = "Review the vocabulary 📚";
+
+            document.getElementById('scoreRating').innerText = rating;
+            document.getElementById('quizForm').style.display = 'none';
+            document.getElementById('quizResults').style.display = 'block';
+            document.getElementById('quizBreakdown').innerHTML = breakdownHtml;
+        }
+
+        function restartQuiz() {
+            document.getElementById('quizForm').reset();
+            document.getElementById('quizForm').style.display = 'block';
+            document.getElementById('quizResults').style.display = 'none';
+        }
+
+        /* ----------------------------------------------------
+           CHARACTER DESCRIBER GENERATOR
+        ---------------------------------------------------- */
+        function generateDescriptionParagraph() {
+            const hair = document.getElementById('descHair').value;
+            const face = document.getElementById('descFace').value;
+            const skin = document.getElementById('descSkin').value;
+            const build = document.getElementById('descBuild').value;
+            const general = document.getElementById('descGeneral').value;
+
+            const paragraph = `This person is ${build}. They have ${hair} and ${face}. Their complexion features ${skin}. Overall, making a memorable first impression, they appear remarkably ${general}.`;
+
+            document.getElementById('generatedParagraph').innerText = paragraph;
+            document.getElementById('descResultBox').style.display = 'block';
+        }
+
+        function speakParagraph() {
+            const text = document.getElementById('generatedParagraph').innerText;
+            speakWord(text);
+        }
+    </script>
+</body>
+</html>
