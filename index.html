@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 7 – Practice: Describing People: Appearance</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Navigation Header -->
+    <header class="bg-gradient-to-r from-brand-900 via-brand-800 to-brand-700 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand Title -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('menu')">
+                    <div class="bg-white/10 p-2 rounded-lg backdrop-blur-sm border border-white/20">
+                        <i class="fa-solid fa-graduation-cap text-yellow-300 text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-semibold tracking-wider text-brand-200 uppercase">Unit 7 Practice</div>
+                        <h1 class="text-base sm:text-lg font-bold leading-tight">Describing People: Appearance</h1>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-1 lg:space-x-2 text-sm font-medium">
+                    <button onclick="navigateTo('menu')" id="nav-menu" class="nav-btn px-3 py-2 rounded-lg transition-colors hover:bg-white/10 flex items-center space-x-1.5">
+                        <i class="fa-solid fa-house text-xs"></i>
+                        <span>Menu</span>
+                    </button>
+                    <button onclick="navigateTo('ex1')" id="nav-ex1" class="nav-btn px-3 py-2 rounded-lg transition-colors hover:bg-white/10 flex items-center space-x-1.5">
+                        <i class="fa-solid fa-pen-field text-xs"></i>
+                        <span>Ex 7.1</span>
+                    </button>
+                    <button onclick="navigateTo('ex2')" id="nav-ex2" class="nav-btn px-3 py-2 rounded-lg transition-colors hover:bg-white/10 flex items-center space-x-1.5">
+                        <i class="fa-solid fa-arrows-rotate text-xs"></i>
+                        <span>Ex 7.2</span>
+                    </button>
+                    <button onclick="navigateTo('ex4')" id="nav-ex4" class="nav-btn px-3 py-2 rounded-lg transition-colors hover:bg-white/10 flex items-center space-x-1.5">
+                        <i class="fa-solid fa-align-left text-xs"></i>
+                        <span>Writing 7.4</span>
+                    </button>
+                    <button onclick="navigateTo('quiz')" id="nav-quiz" class="nav-btn px-3 py-2 rounded-lg transition-colors hover:bg-white/10 flex items-center space-x-1.5">
+                        <i class="fa-solid fa-circle-question text-xs"></i>
+                        <span>Final Quiz</span>
+                    </button>
+                </nav>
+
+                <!-- Target Badge -->
+                <div class="hidden sm:flex items-center space-x-2">
+                    <span class="bg-brand-500/30 text-brand-100 text-xs font-semibold px-2.5 py-1 rounded-full border border-brand-300/30">
+                        B1–B2 Level
+                    </span>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileNav()" class="md:hidden p-2 rounded-lg hover:bg-white/10 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-brand-900 px-4 pt-2 pb-4 space-y-2">
+            <button onclick="navigateTo('menu'); toggleMobileNav()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium hover:bg-white/10 flex items-center space-x-2">
+                <i class="fa-solid fa-house w-5"></i><span>Main Menu</span>
+            </button>
+            <button onclick="navigateTo('ex1'); toggleMobileNav()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium hover:bg-white/10 flex items-center space-x-2">
+                <i class="fa-solid fa-pen-field w-5"></i><span>Exercise 7.1 (Fill-in-the-blanks)</span>
+            </button>
+            <button onclick="navigateTo('ex2'); toggleMobileNav()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium hover:bg-white/10 flex items-center space-x-2">
+                <i class="fa-solid fa-arrows-rotate w-5"></i><span>Exercise 7.2 (Opposites)</span>
+            </button>
+            <button onclick="navigateTo('ex4'); toggleMobileNav()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium hover:bg-white/10 flex items-center space-x-2">
+                <i class="fa-solid fa-align-left w-5"></i><span>Writing Challenge 7.4</span>
+            </button>
+            <button onclick="navigateTo('quiz'); toggleMobileNav()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium hover:bg-white/10 flex items-center space-x-2">
+                <i class="fa-solid fa-circle-question w-5"></i><span>Final Quiz (20 MCQs)</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-5xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- VIEW 1: MAIN MENU -->
+        <section id="view-menu" class="space-y-6 animate-fade-in">
+            <!-- Hero Section -->
+            <div class="bg-gradient-to-br from-brand-600 to-indigo-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg relative overflow-hidden">
+                <div class="relative z-10 space-y-3 max-w-2xl">
+                    <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold tracking-wide text-brand-100 uppercase">
+                        Interactive Practice Hub
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold">Mastering Appearance Vocabulary</h2>
+                    <p class="text-brand-100 text-sm sm:text-base leading-relaxed">
+                        Test and refine your B1–B2 vocabulary for describing face features, hair, skin, height, build, and overall appearance through interactive drills, writing tasks, and quizzes.
+                    </p>
+                </div>
+                <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl pointer-events-none">
+                    <i class="fa-solid fa-user-gear"></i>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                
+                <!-- Card 1: Ex 7.1 -->
+                <div onclick="navigateTo('ex1')" class="group bg-white rounded-xl p-6 shadow-sm hover:shadow-md border border-slate-200 hover:border-brand-300 transition-all cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-10 h-10 rounded-lg bg-blue-50 text-brand-600 flex items-center justify-center font-bold text-lg group-hover:scale-110 transition-transform">
+                                7.1
+                            </span>
+                            <span class="text-xs font-medium px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full">9 Fill-in Questions</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 group-hover:text-brand-600 transition-colors">Vocabulary Gap-Fill</h3>
+                        <p class="text-slate-600 text-sm mt-1">Complete target sentences using core vocabulary: <i>tan, figure, feature, complexion, impression, auburn, wrinkles, elegant, stunning</i>.</p>
+                    </div>
+                    <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-sm text-brand-600 font-semibold">
+                        <span>Start Exercise</span>
+                        <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                    </div>
+                </div>
+
+                <!-- Card 2: Ex 7.2 -->
+                <div onclick="navigateTo('ex2')" class="group bg-white rounded-xl p-6 shadow-sm hover:shadow-md border border-slate-200 hover:border-brand-300 transition-all cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-lg group-hover:scale-110 transition-transform">
+                                7.2
+                            </span>
+                            <span class="text-xs font-medium px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full">6 Questions</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">Opposite Descriptions</h3>
+                        <p class="text-slate-600 text-sm mt-1">Identify correct antonyms and contrasting physical traits across multiple-choice options with explanations.</p>
+                    </div>
+                    <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-sm text-indigo-600 font-semibold">
+                        <span>Start Exercise</span>
+                        <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                    </div>
+                </div>
+
+                <!-- Card 3: Writing 7.4 -->
+                <div onclick="navigateTo('ex4')" class="group bg-white rounded-xl p-6 shadow-sm hover:shadow-md border border-slate-200 hover:border-brand-300 transition-all cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-lg group-hover:scale-110 transition-transform">
+                                7.4
+                            </span>
+                            <span class="text-xs font-medium px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full">4 Prompts</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 group-hover:text-emerald-600 transition-colors">Writing Challenge</h3>
+                        <p class="text-slate-600 text-sm mt-1">Practice describing yourself, a friend, a neighbour, or an ideal person using sentence starters, word banks, and checklists.</p>
+                    </div>
+                    <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-sm text-emerald-600 font-semibold">
+                        <span>Open Writing Lab</span>
+                        <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                    </div>
+                </div>
+
+                <!-- Card 4: Final Quiz -->
+                <div onclick="navigateTo('quiz')" class="group bg-white rounded-xl p-6 shadow-sm hover:shadow-md border border-slate-200 hover:border-brand-300 transition-all cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-lg group-hover:scale-110 transition-transform">
+                                Quiz
+                            </span>
+                            <span class="text-xs font-medium px-2.5 py-1 bg-amber-100 text-amber-800 rounded-full font-semibold">20 Comprehensive MCQs</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 group-hover:text-amber-600 transition-colors">Unit 7 Final Quiz</h3>
+                        <p class="text-slate-600 text-sm mt-1">Test hair, face, skin, height, build, '-ish' suffixes, and context usage to receive your proficiency grade.</p>
+                    </div>
+                    <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-sm text-amber-600 font-semibold">
+                        <span>Take Final Quiz</span>
+                        <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- VIEW 2: EXERCISE 7.1 -->
+        <section id="view-ex1" class="hidden space-y-6 animate-fade-in">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+                <!-- Header -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-4 mb-6 gap-3">
+                    <div>
+                        <span class="text-xs font-bold text-brand-600 tracking-wider uppercase">Exercise 7.1</span>
+                        <h2 class="text-xl font-bold text-slate-800">Vocabulary Fill-in-the-Blank</h2>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span id="ex1-progress-text" class="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
+                            Question 1/9
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden mb-6">
+                    <div id="ex1-progress-bar" class="bg-brand-600 h-full transition-all duration-300" style="width: 11%;"></div>
+                </div>
+
+                <!-- Word Bank Helper Box -->
+                <div class="mb-6 p-4 bg-brand-50 border border-brand-100 rounded-xl">
+                    <div class="text-xs font-bold text-brand-800 uppercase tracking-wider mb-2 flex items-center space-x-1">
+                        <i class="fa-solid fa-lightbulb text-yellow-500"></i>
+                        <span>Word Bank (Click word to insert)</span>
+                    </div>
+                    <div id="ex1-word-bank" class="flex flex-wrap gap-2">
+                        <!-- Chips dynamically rendered -->
+                    </div>
+                </div>
+
+                <!-- Question Area -->
+                <div id="ex1-card" class="space-y-6">
+                    <div class="p-5 bg-slate-50 rounded-xl border border-slate-200">
+                        <div id="ex1-sentence" class="text-base sm:text-lg font-medium text-slate-800 leading-relaxed">
+                            <!-- Sentence content injected here -->
+                        </div>
+                    </div>
+
+                    <!-- Input Section -->
+                    <div class="space-y-3">
+                        <label for="ex1-input" class="block text-sm font-semibold text-slate-700">Type or select your answer:</label>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input type="text" id="ex1-input" autocomplete="off" placeholder="Type answer here..." 
+                                   class="flex-grow px-4 py-3 border border-slate-300 rounded-xl text-base focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all">
+                            <button id="ex1-check-btn" onclick="checkEx1Answer()" class="px-6 py-3 bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white font-semibold rounded-xl transition-all shadow-sm flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-check"></i>
+                                <span>Check Answer</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Feedback Box -->
+                    <div id="ex1-feedback" class="hidden p-4 rounded-xl text-sm font-medium transition-all"></div>
+
+                    <!-- Next Button -->
+                    <div class="flex justify-end pt-2">
+                        <button id="ex1-next-btn" onclick="nextEx1Question()" class="hidden px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-xl transition-all shadow-sm items-center space-x-2">
+                            <span>Next Question</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Exercise 7.1 Score End Screen -->
+                <div id="ex1-result" class="hidden text-center py-8 space-y-6">
+                    <div class="w-20 h-20 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center text-3xl mx-auto shadow-inner">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800">Exercise 7.1 Completed!</h3>
+                        <p class="text-slate-600 mt-1">Here is your score for the vocabulary gap-fill drill:</p>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 max-w-sm mx-auto">
+                        <div id="ex1-score-display" class="text-4xl font-extrabold text-brand-600">0 / 9</div>
+                        <div id="ex1-percentage-display" class="text-sm font-semibold text-slate-500 mt-1">0% Correct</div>
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-3 pt-2">
+                        <button onclick="resetEx1()" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl transition-all shadow-sm">
+                            <i class="fa-solid fa-rotate-right mr-2"></i>Retry Exercise
+                        </button>
+                        <button onclick="navigateTo('ex2')" class="px-6 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-xl transition-all shadow-sm">
+                            Next: Exercise 7.2 <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 3: EXERCISE 7.2 -->
+        <section id="view-ex2" class="hidden space-y-6 animate-fade-in">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+                <!-- Header -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-4 mb-6 gap-3">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-600 tracking-wider uppercase">Exercise 7.2</span>
+                        <h2 class="text-xl font-bold text-slate-800">Opposite Descriptions</h2>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span id="ex2-progress-text" class="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
+                            Question 1/6
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden mb-6">
+                    <div id="ex2-progress-bar" class="bg-indigo-600 h-full transition-all duration-300" style="width: 16%;"></div>
+                </div>
+
+                <!-- Question Area -->
+                <div id="ex2-card" class="space-y-6">
+                    <div class="p-5 bg-indigo-50/50 rounded-xl border border-indigo-100">
+                        <div class="text-xs font-bold text-indigo-700 uppercase tracking-wide mb-1">Target Description</div>
+                        <div id="ex2-question-text" class="text-lg font-bold text-slate-800">
+                            <!-- Question injected here -->
+                        </div>
+                    </div>
+
+                    <!-- Choices Grid -->
+                    <div id="ex2-options" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <!-- 4 choices injected dynamically -->
+                    </div>
+
+                    <!-- Action & Feedback Section -->
+                    <div class="space-y-4 pt-2">
+                        <div class="flex flex-wrap items-center justify-between gap-3">
+                            <button id="ex2-check-btn" onclick="checkEx2Answer()" disabled class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-semibold rounded-xl transition-all shadow-sm flex items-center space-x-2">
+                                <i class="fa-solid fa-check"></i>
+                                <span>Check Answer</span>
+                            </button>
+                            <button id="ex2-next-btn" onclick="nextEx2Question()" class="hidden px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-xl transition-all shadow-sm items-center space-x-2">
+                                <span>Next Question</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <div id="ex2-feedback" class="hidden p-4 rounded-xl text-sm transition-all space-y-1"></div>
+                    </div>
+                </div>
+
+                <!-- Exercise 7.2 Score End Screen -->
+                <div id="ex2-result" class="hidden text-center py-8 space-y-6">
+                    <div class="w-20 h-20 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-3xl mx-auto shadow-inner">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800">Exercise 7.2 Completed!</h3>
+                        <p class="text-slate-600 mt-1">Here is your score for opposite descriptions:</p>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 max-w-sm mx-auto">
+                        <div id="ex2-score-display" class="text-4xl font-extrabold text-indigo-600">0 / 6</div>
+                        <div id="ex2-percentage-display" class="text-sm font-semibold text-slate-500 mt-1">0% Correct</div>
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-3 pt-2">
+                        <button onclick="resetEx2()" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition-all shadow-sm">
+                            <i class="fa-solid fa-rotate-right mr-2"></i>Retry Exercise
+                        </button>
+                        <button onclick="navigateTo('ex4')" class="px-6 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-xl transition-all shadow-sm">
+                            Next: Writing Challenge <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 4: WRITING CHALLENGE 7.4 -->
+        <section id="view-ex4" class="hidden space-y-6 animate-fade-in">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+                <!-- Header -->
+                <div class="border-b border-slate-100 pb-4">
+                    <span class="text-xs font-bold text-emerald-600 tracking-wider uppercase">Exercise 7.4</span>
+                    <h2 class="text-xl font-bold text-slate-800">Interactive Writing Challenge</h2>
+                    <p class="text-slate-600 text-sm mt-1">Select a prompt below, write your detailed description using target vocabulary, and check your descriptive elements.</p>
+                </div>
+
+                <!-- Prompt Selector Tabs -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+                    <button onclick="selectWritingPrompt(1)" id="writing-tab-1" class="writing-tab px-4 py-3 rounded-xl border border-slate-200 text-left font-semibold text-sm transition-all hover:bg-slate-50">
+                        1. Describe yourself
+                    </button>
+                    <button onclick="selectWritingPrompt(2)" id="writing-tab-2" class="writing-tab px-4 py-3 rounded-xl border border-slate-200 text-left font-semibold text-sm transition-all hover:bg-slate-50">
+                        2. Describe your best friend
+                    </button>
+                    <button onclick="selectWritingPrompt(3)" id="writing-tab-3" class="writing-tab px-4 py-3 rounded-xl border border-slate-200 text-left font-semibold text-sm transition-all hover:bg-slate-50">
+                        3. Describe a neighbour
+                    </button>
+                    <button onclick="selectWritingPrompt(4)" id="writing-tab-4" class="writing-tab px-4 py-3 rounded-xl border border-slate-200 text-left font-semibold text-sm transition-all hover:bg-slate-50">
+                        4. Describe your ideal person
+                    </button>
+                </div>
+
+                <!-- Main Writing Workspace Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Left/Top: Text Editor Area (2 cols on large) -->
+                    <div class="lg:col-span-2 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span id="current-prompt-label" class="text-sm font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">
+                                Prompt 1: Describe yourself
+                            </span>
+                            <div class="text-xs font-medium text-slate-500">
+                                Words: <span id="word-count" class="font-bold text-slate-800">0</span>
+                            </div>
+                        </div>
+
+                        <!-- Writing Area -->
+                        <div class="relative">
+                            <textarea id="writing-textarea" rows="12" oninput="updateWritingStats()"
+                                      placeholder="Start writing your description here..."
+                                      class="w-full p-4 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none text-slate-800 text-base leading-relaxed custom-scrollbar shadow-inner"></textarea>
+                        </div>
+
+                        <!-- Editor Controls -->
+                        <div class="flex flex-wrap items-center justify-between gap-3">
+                            <div class="flex space-x-2">
+                                <button onclick="openClearModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-semibold rounded-lg transition-colors flex items-center space-x-1.5">
+                                    <i class="fa-solid fa-trash-can text-slate-500"></i>
+                                    <span>Clear Writing</span>
+                                </button>
+                                <button onclick="toggleSampleAnswer()" class="px-4 py-2 bg-emerald-100 hover:bg-emerald-200 text-emerald-800 text-sm font-semibold rounded-lg transition-colors flex items-center space-x-1.5">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>Sample Answer</span>
+                                </button>
+                            </div>
+                            <button onclick="copyWritingText()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-lg transition-colors flex items-center space-x-1.5">
+                                <i class="fa-solid fa-copy"></i>
+                                <span>Copy Text</span>
+                            </button>
+                        </div>
+
+                        <!-- Sample Answer Expander -->
+                        <div id="sample-answer-box" class="hidden p-5 bg-emerald-50/70 rounded-xl border border-emerald-200 text-slate-800 space-y-2 animate-fade-in">
+                            <div class="flex items-center justify-between text-xs font-bold text-emerald-800 uppercase tracking-wider">
+                                <span><i class="fa-solid fa-gem mr-1"></i> Sample B1–B2 Model Answer</span>
+                                <button onclick="toggleSampleAnswer()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-base"></i></button>
+                            </div>
+                            <p id="sample-answer-text" class="text-sm leading-relaxed italic text-slate-700">
+                                <!-- Model answer injected here -->
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Interactive Helpers & Checklist -->
+                    <div class="space-y-5">
+                        
+                        <!-- Checklist Panel -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center justify-between">
+                                <span>Aspect Checklist</span>
+                                <span class="text-emerald-600"><i class="fa-solid fa-list-check"></i></span>
+                            </h4>
+                            <p class="text-xs text-slate-500">Check off aspects as you include them in your paragraph:</p>
+                            
+                            <div class="space-y-2 text-sm font-medium">
+                                <label class="flex items-center space-x-2.5 cursor-pointer hover:text-emerald-700">
+                                    <input type="checkbox" id="chk-hair" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
+                                    <span>Hair (style, color, length)</span>
+                                </label>
+                                <label class="flex items-center space-x-2.5 cursor-pointer hover:text-emerald-700">
+                                    <input type="checkbox" id="chk-face" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
+                                    <span>Face & Features (eyes, nose, wrinkles)</span>
+                                </label>
+                                <label class="flex items-center space-x-2.5 cursor-pointer hover:text-emerald-700">
+                                    <input type="checkbox" id="chk-skin" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
+                                    <span>Skin / Complexion (pale, tanned, smooth)</span>
+                                </label>
+                                <label class="flex items-center space-x-2.5 cursor-pointer hover:text-emerald-700">
+                                    <input type="checkbox" id="chk-height" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
+                                    <span>Height (tall, short, medium height)</span>
+                                </label>
+                                <label class="flex items-center space-x-2.5 cursor-pointer hover:text-emerald-700">
+                                    <input type="checkbox" id="chk-build" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
+                                    <span>Build (slender, broad, muscular, plump)</span>
+                                </label>
+                                <label class="flex items-center space-x-2.5 cursor-pointer hover:text-emerald-700">
+                                    <input type="checkbox" id="chk-gen" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
+                                    <span>General Appearance (elegant, neat)</span>
+                                </label>
+                                <label class="flex items-center space-x-2.5 cursor-pointer hover:text-emerald-700">
+                                    <input type="checkbox" id="chk-personality" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
+                                    <span>Personality / Impression</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Sentence Starters Accordion -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-600">Sentence Starters</h4>
+                            <p class="text-xs text-slate-500">Click any phrase to insert into your text:</p>
+                            <div class="space-y-1.5 text-xs max-h-48 overflow-y-auto custom-scrollbar pr-1">
+                                <button onclick="insertStarter('He/She has a clear complexion and...')" class="w-full text-left p-2 bg-white hover:bg-emerald-50 rounded border border-slate-200 text-slate-700 font-medium transition-colors">
+                                    "He/She has a clear complexion and..."
+                                </button>
+                                <button onclick="insertStarter('In terms of build, he/she is...')" class="w-full text-left p-2 bg-white hover:bg-emerald-50 rounded border border-slate-200 text-slate-700 font-medium transition-colors">
+                                    "In terms of build, he/she is..."
+                                </button>
+                                <button onclick="insertStarter('My first impression of him/her was...')" class="w-full text-left p-2 bg-white hover:bg-emerald-50 rounded border border-slate-200 text-slate-700 font-medium transition-colors">
+                                    "My first impression of him/her was..."
+                                </button>
+                                <button onclick="insertStarter('He/She is around thirtyish with...')" class="w-full text-left p-2 bg-white hover:bg-emerald-50 rounded border border-slate-200 text-slate-700 font-medium transition-colors">
+                                    "He/She is around thirtyish with..."
+                                </button>
+                                <button onclick="insertStarter('What makes him/her look stunning is...')" class="w-full text-left p-2 bg-white hover:bg-emerald-50 rounded border border-slate-200 text-slate-700 font-medium transition-colors">
+                                    "What makes him/her look stunning is..."
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Categorized Word Bank -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-600">Unit 7 Word Bank</h4>
+                            <div class="flex flex-wrap gap-1.5 text-xs">
+                                <span class="bg-white border border-slate-200 px-2 py-1 rounded text-slate-700 font-medium">auburn</span>
+                                <span class="bg-white border border-slate-200 px-2 py-1 rounded text-slate-700 font-medium">slender</span>
+                                <span class="bg-white border border-slate-200 px-2 py-1 rounded text-slate-700 font-medium">complexion</span>
+                                <span class="bg-white border border-slate-200 px-2 py-1 rounded text-slate-700 font-medium">wrinkles</span>
+                                <span class="bg-white border border-slate-200 px-2 py-1 rounded text-slate-700 font-medium">freckles</span>
+                                <span class="bg-white border border-slate-200 px-2 py-1 rounded text-slate-700 font-medium">medium height</span>
+                                <span class="bg-white border border-slate-200 px-2 py-1 rounded text-slate-700 font-medium">scruffy</span>
+                                <span class="bg-white border border-slate-200 px-2 py-1 rounded text-slate-700 font-medium">stunning</span>
+                                <span class="bg-white border border-slate-200 px-2 py-1 rounded text-slate-700 font-medium">impression</span>
+                                <span class="bg-white border border-slate-200 px-2 py-1 rounded text-slate-700 font-medium">well-built</span>
+                                <span class="bg-white border border-slate-200 px-2 py-1 rounded text-slate-700 font-medium">fortyish</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 5: FINAL QUIZ -->
+        <section id="view-quiz" class="hidden space-y-6 animate-fade-in">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+                <!-- Quiz Header -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-4 mb-6 gap-3">
+                    <div>
+                        <span class="text-xs font-bold text-amber-600 tracking-wider uppercase">Unit 7 Final Assessment</span>
+                        <h2 class="text-xl font-bold text-slate-800">Comprehensive Vocabulary Quiz</h2>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span id="quiz-progress-text" class="text-sm font-bold text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full">
+                            Question 1/20
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden mb-6">
+                    <div id="quiz-progress-bar" class="bg-gradient-to-r from-amber-500 to-amber-600 h-full transition-all duration-300" style="width: 5%;"></div>
+                </div>
+
+                <!-- Quiz Card -->
+                <div id="quiz-card" class="space-y-6">
+                    <!-- Category & Question -->
+                    <div class="p-5 bg-amber-50/40 rounded-xl border border-amber-100 space-y-2">
+                        <div id="quiz-category" class="text-xs font-bold uppercase tracking-wider text-amber-700">Category</div>
+                        <div id="quiz-question-text" class="text-base sm:text-lg font-bold text-slate-800 leading-snug">
+                            <!-- Question injected here -->
+                        </div>
+                    </div>
+
+                    <!-- Choices (4 buttons) -->
+                    <div id="quiz-options" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <!-- Choices injected here -->
+                    </div>
+
+                    <!-- Action and Explanation -->
+                    <div class="space-y-4 pt-2">
+                        <div class="flex flex-wrap items-center justify-between gap-3">
+                            <button id="quiz-check-btn" onclick="checkQuizAnswer()" disabled class="px-6 py-3 bg-amber-600 hover:bg-amber-700 disabled:opacity-50 text-white font-semibold rounded-xl transition-all shadow-sm flex items-center space-x-2">
+                                <i class="fa-solid fa-check"></i>
+                                <span>Check Answer</span>
+                            </button>
+                            <button id="quiz-next-btn" onclick="nextQuizQuestion()" class="hidden px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-xl transition-all shadow-sm items-center space-x-2">
+                                <span>Next Question</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <!-- Feedback Box -->
+                        <div id="quiz-feedback" class="hidden p-4 rounded-xl text-sm transition-all space-y-1"></div>
+                    </div>
+                </div>
+
+                <!-- FINAL QUIZ RESULTS SCREEN -->
+                <div id="quiz-result-screen" class="hidden space-y-8 py-6">
+                    <div class="text-center space-y-3">
+                        <div id="quiz-result-icon" class="w-24 h-24 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner bg-amber-100 text-amber-600">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-800">Final Quiz Results</h3>
+                        <p class="text-slate-600 text-sm sm:text-base">Unit 7 Appearance & Physical Traits Evaluation</p>
+                    </div>
+
+                    <!-- Score Card Display -->
+                    <div class="bg-gradient-to-b from-slate-50 to-white border border-slate-200 rounded-2xl p-6 sm:p-8 max-w-md mx-auto text-center space-y-4 shadow-sm">
+                        <div class="space-y-1">
+                            <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Total Score</div>
+                            <div id="final-score-display" class="text-5xl font-black text-brand-600">18 / 20</div>
+                            <div id="final-percentage-display" class="text-base font-bold text-slate-600">90%</div>
+                        </div>
+
+                        <!-- Status Badge -->
+                        <div class="pt-2 border-t border-slate-100">
+                            <div id="final-grade-badge" class="inline-block px-5 py-2 rounded-full font-bold text-base shadow-sm">
+                                Excellent
+                            </div>
+                            <p id="final-grade-description" class="text-xs text-slate-500 mt-2">
+                                Fantastic job! You have fully mastered Unit 7 appearance vocabulary.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Action Buttons -->
+                    <div class="flex flex-wrap justify-center gap-3 pt-4">
+                        <button onclick="resetQuiz()" class="px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-xl transition-all shadow-sm flex items-center space-x-2">
+                            <i class="fa-solid fa-rotate-right"></i>
+                            <span>Retry Quiz</span>
+                        </button>
+                        <button onclick="navigateTo('ex1')" class="px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl transition-all shadow-sm flex items-center space-x-2">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>Practice Again</span>
+                        </button>
+                        <button onclick="navigateTo('menu')" class="px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-xl transition-all shadow-sm flex items-center space-x-2">
+                            <i class="fa-solid fa-house"></i>
+                            <span>Back to Home</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Custom Modal for Clear Confirmation (No alert/confirm used) -->
+    <div id="modal-clear" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-fade-in">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 space-y-4 shadow-xl">
+            <div class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-xl mx-auto">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <div class="text-center space-y-1">
+                <h3 class="text-lg font-bold text-slate-800">Clear your writing?</h3>
+                <p class="text-xs text-slate-500">This action will remove all text currently in your editor box.</p>
+            </div>
+            <div class="flex space-x-3 pt-2">
+                <button onclick="closeClearModal()" class="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition-colors">
+                    Cancel
+                </button>
+                <button onclick="confirmClearWriting()" class="flex-1 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-xl text-sm transition-colors">
+                    Yes, Clear
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-800 text-white px-4 py-3 rounded-xl shadow-lg flex items-center space-x-2 text-sm font-medium">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toast-message">Message copied!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500">
+        <div class="max-w-6xl mx-auto px-4 space-y-1">
+            <p class="font-semibold text-slate-700">Unit 7 Practice App – English B1–B2 Vocabulary</p>
+            <p>Describing People: Appearance, Features, Hair, Build & Complexion</p>
+        </div>
+    </footer>
+
+    <script>
+        /* JavaScript Application State & Logic */
+
+        // -------------------------------------------------------------
+        // EXERCISE 7.1 DATA & STATE
+        // -------------------------------------------------------------
+        const ex1Data = [
+            { id: 1, text: "After spending two weeks on the beach in Spain, she had a lovely golden ______.", answer: "tan" },
+            { id: 2, text: "She stays healthy and exercises regularly to maintain a tall, slender ______.", answer: "figure" },
+            { id: 3, text: "His most striking facial ______ is definitely his piercing blue eyes.", answer: "feature" },
+            { id: 4, text: "She uses daily moisturizing cream to keep a smooth and healthy ______.", answer: "complexion" },
+            { id: 5, text: "Dressing smartly for a job interview helps you make a great first ______.", answer: "impression" },
+            { id: 6, text: "She has natural reddish-brown ______ hair that looks gorgeous in sunlight.", answer: "auburn" },
+            { id: 7, text: "As people get older, fine lines and ______ usually appear around their eyes.", answer: "wrinkles" },
+            { id: 8, text: "She wore a black evening gown that made her look remarkably ______ at the dinner.", answer: "elegant" },
+            { id: 9, text: "The actress looked absolutely ______ when she walked down the red carpet.", answer: "stunning" }
+        ];
+
+        const ex1Words = ["tan", "figure", "feature", "complexion", "impression", "auburn", "wrinkles", "elegant", "stunning"];
+        let ex1CurrentIdx = 0;
+        let ex1Score = 0;
+        let ex1Answered = false;
+
+        // -------------------------------------------------------------
+        // EXERCISE 7.2 DATA & STATE (Opposites)
+        // -------------------------------------------------------------
+        const ex2Data = [
+            {
+                question: "What is the opposite of 'slender / slim'?",
+                options: ["overweight / plump", "tall / high", "elegant / stylish", "auburn / reddish"],
+                correct: 0,
+                explanation: "'Slender' or 'slim' means attractively thin. The opposite is 'overweight' or 'plump' (slightly fat)."
+            },
+            {
+                question: "What is the opposite of 'fair hair / blonde hair'?",
+                options: ["dark hair", "curly hair", "shoulder-length hair", "wavy hair"],
+                correct: 0,
+                explanation: "'Fair hair' refers to light/blonde hair; the opposite is 'dark hair' (brown or black)."
+            },
+            {
+                question: "What is the opposite of 'a clear complexion'?",
+                options: ["a spotty / blemished complexion", "a tanned complexion", "a pale complexion", "a smooth complexion"],
+                correct: 0,
+                explanation: "A 'clear' complexion has no pimples or spots. The opposite is a 'spotty' or 'blemished' complexion."
+            },
+            {
+                question: "What is the opposite of 'broad-shouldered / well-built'?",
+                options: ["slight build / thin", "muscular", "chubby", "middle-aged"],
+                correct: 0,
+                explanation: "'Well-built' or 'broad-shouldered' means strong and sturdy. The opposite is 'slight build' or thin."
+            },
+            {
+                question: "What is the opposite of 'an untidy / scruffy appearance'?",
+                options: ["a smart / neat / well-groomed appearance", "a glamorous appearance", "a muscular appearance", "a tall appearance"],
+                correct: 0,
+                explanation: "'Scruffy' or 'untidy' means messy. The opposite is 'smart', 'neat', or 'well-groomed'."
+            },
+            {
+                question: "What is the opposite of 'plain / unattractive'?",
+                options: ["handsome / attractive / good-looking", "average height", "elderly", "skinny"],
+                correct: 0,
+                explanation: "'Plain' means not particularly attractive. The opposite is 'handsome', 'attractive', or 'good-looking'."
+            }
+        ];
+
+        let ex2CurrentIdx = 0;
+        let ex2Score = 0;
+        let ex2SelectedIdx = null;
+
+        // -------------------------------------------------------------
+        // WRITING CHALLENGE 7.4 SAMPLE ANSWERS
+        // -------------------------------------------------------------
+        const sampleAnswers = {
+            1: "I am a person of medium height with a slight build. I have shoulder-length auburn hair and brown eyes. My complexion is usually quite pale, but I get a few freckles during the summer. I like dressing in smart but comfortable clothes, which gives people a friendly impression.",
+            2: "My best friend Alex is tall and well-built with broad shoulders because he plays volleyball. He has dark, wavy hair and a tan complexion from spending time outdoors. He has warm dimples when he smiles, and his general appearance is always neat and energetic.",
+            3: "Our neighbour, Mrs. Gable, is an elegant woman in her late sixties. She has short silver hair and soft wrinkles around her eyes that show her cheerful nature. She is slightly short in height and always dresses in stylish, well-tailored outfits.",
+            4: "My ideal attractive person would have a clear complexion, warm expressive eyes, and a tall, slender figure. Whether they have dark or auburn hair, the most stunning feature would be their confident smile and well-groomed, classy sense of style."
+        };
+
+        let currentWritingPrompt = 1;
+
+        // -------------------------------------------------------------
+        // FINAL QUIZ DATA (20 MCQs)
+        // -------------------------------------------------------------
+        const quizData = [
+            {
+                category: "Hair",
+                question: "When a man's hair is starting to disappear at the front and sides as he gets older, he has a...",
+                options: ["receding hairline", "curly ponytail", "auburn beard", "clear complexion"],
+                correct: 0,
+                explanation: "A 'receding hairline' describes hair gradually retreating back from the forehead."
+            },
+            {
+                category: "Expressions with -ish",
+                question: "If someone is described as 'thirtyish', what does it mean?",
+                options: ["They are exactly 30 years old today.", "They are approximately 30 years old.", "They are thirty years older than you.", "They hate being 30 years old."],
+                correct: 1,
+                explanation: "The suffix '-ish' attached to numbers or ages means 'approximately' or 'around'."
+            },
+            {
+                category: "Build",
+                question: "Which word describes someone who is attractively thin, graceful, and elegant?",
+                options: ["slender", "skinny", "fat", "stocky"],
+                correct: 0,
+                explanation: "'Slender' is a positive and flattering word for thin and graceful. 'Skinny' can sound overly negative."
+            },
+            {
+                category: "Face Features",
+                question: "Small brown spots on the skin, often made more visible by sun exposure, are called...",
+                options: ["wrinkles", "freckles", "dimples", "scars"],
+                correct: 1,
+                explanation: "'Freckles' are small brown spots common on fair skin after sun exposure."
+            },
+            {
+                category: "Positive vs Negative Terms",
+                question: "While calling someone 'fat' is rude, which polite word can describe a person who is slightly round?",
+                options: ["plump", "skinny", "scruffy", "pale"],
+                correct: 0,
+                explanation: "'Plump' is a polite, neutral or warm way to describe someone slightly round in shape."
+            },
+            {
+                category: "Height",
+                question: "If someone is neither very tall nor very short, they are of...",
+                options: ["average / medium height", "high height", "slender height", "broad height"],
+                correct: 0,
+                explanation: "'Medium height' or 'average height' is the standard B1–B2 phrase."
+            },
+            {
+                category: "Hair Color",
+                question: "What color is 'auburn' hair?",
+                options: ["Reddish-brown", "Jet black", "Platinum blonde", "Bright silver"],
+                correct: 0,
+                explanation: "'Auburn' specifically describes a rich reddish-brown hair color."
+            },
+            {
+                category: "Opposites",
+                question: "What is the best opposite for 'a scruffy appearance'?",
+                options: ["a smart / well-groomed appearance", "a pale appearance", "a broad appearance", "a wrinkled appearance"],
+                correct: 0,
+                explanation: "'Scruffy' means untidy. 'Smart' or 'well-groomed' is the exact opposite."
+            },
+            {
+                category: "Expressions with -ish",
+                question: "If a coat is 'greenish', it means...",
+                options: ["it is made of leaves.", "it is somewhat or slightly green.", "it is bright fluorescent green.", "it used to be green."],
+                correct: 1,
+                explanation: "Suffix '-ish' added to colors means 'slightly' or 'somewhat'."
+            },
+            {
+                category: "Build",
+                question: "A man who has wide shoulders, strong muscles, and a sturdy frame is...",
+                options: ["well-built", "skinny", "slender", "unattractive"],
+                correct: 0,
+                explanation: "'Well-built' describes a person with a strong, solid physical frame."
+            },
+            {
+                category: "Face Features",
+                question: "Small hollow indentations in cheeks that appear when someone smiles are...",
+                options: ["dimples", "wrinkles", "freckles", "complexions"],
+                correct: 0,
+                explanation: "'Dimples' are small natural hollows in cheeks visible during a smile."
+            },
+            {
+                category: "General Appearance",
+                question: "Which word means 'extremely beautiful and impressive'?",
+                options: ["stunning", "plain", "scruffy", "slight"],
+                correct: 0,
+                explanation: "'Stunning' is an emphatic adjective meaning extremely attractive."
+            },
+            {
+                category: "Complexion",
+                question: "Someone who has light skin that rarely sees the sun is said to have a ______ complexion.",
+                options: ["pale", "auburn", "stocky", "curly"],
+                correct: 0,
+                explanation: "'Pale' describes light or whitish skin complexion."
+            },
+            {
+                category: "Hair Style",
+                question: "Hair that falls in smooth curves (not tight spirals and not straight) is called...",
+                options: ["wavy", "bald", "receding", "plump"],
+                correct: 0,
+                explanation: "'Wavy' hair forms smooth curves between straight and curly."
+            },
+            {
+                category: "General Appearance",
+                question: "The word 'elegant' is used to describe someone who...",
+                options: ["is stylish, graceful, and dignified", "looks untidy and messy", "has lots of pimples", "is very short"],
+                correct: 0,
+                explanation: "'Elegant' means showing good style, grace, and dignity."
+            },
+            {
+                category: "Skin",
+                question: "Folded lines on an older person's skin, especially on their face, are...",
+                options: ["wrinkles", "tan", "freckles", "hairlines"],
+                correct: 0,
+                explanation: "'Wrinkles' are natural lines formed on skin as people age."
+            },
+            {
+                category: "Context Usage",
+                question: "Choose the correct sentence:",
+                options: [
+                    "She has a clear complexion and a glowing smile.",
+                    "She has a clear figure hair and red skin.",
+                    "She is broad height and very scruffy beautiful.",
+                    "She has auburn wrinkles on her build."
+                ],
+                correct: 0,
+                explanation: "'Clear complexion' is a natural and correct B1-B2 word combination."
+            },
+            {
+                category: "Complexion & Sun",
+                question: "If you spend time outside in the sun, your skin may become brownish or...",
+                options: ["tanned", "auburn", "slim", "receding"],
+                correct: 0,
+                explanation: "'Tanned' skin is darkened by exposure to sunlight."
+            },
+            {
+                category: "Impressions",
+                question: "Complete: 'Her friendly smile left a warm ______ on everybody.'",
+                options: ["impression", "feature", "wrinkle", "complexion"],
+                correct: 0,
+                explanation: "'Make / leave an impression' is a common fixed phrase."
+            },
+            {
+                category: "Opposites & Height",
+                question: "What is the opposite of 'short' when talking about height?",
+                options: ["tall", "high", "long", "broad"],
+                correct: 0,
+                explanation: "When describing people's height, we use 'tall' (never 'high' or 'long')."
+            }
+        ];
+
+        let quizCurrentIdx = 0;
+        let quizScore = 0;
+        let quizSelectedIdx = null;
+
+        // -------------------------------------------------------------
+        // NAVIGATION HANDLER
+        // -------------------------------------------------------------
+        function navigateTo(viewId) {
+            const views = ['menu', 'ex1', 'ex2', 'ex4', 'quiz'];
+            views.forEach(v => {
+                const el = document.getElementById(`view-${v}`);
+                if (el) el.classList.add('hidden');
+                
+                const navBtn = document.getElementById(`nav-${v}`);
+                if (navBtn) {
+                    navBtn.classList.remove('bg-white/20', 'text-white', 'font-bold');
+                    navBtn.classList.add('hover:bg-white/10');
+                }
+            });
+
+            const targetView = document.getElementById(`view-${viewId}`);
+            if (targetView) targetView.classList.remove('hidden');
+
+            const targetNav = document.getElementById(`nav-${viewId}`);
+            if (targetNav) {
+                targetNav.classList.add('bg-white/20', 'text-white', 'font-bold');
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileNav() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) menu.classList.toggle('hidden');
+        }
+
+        // -------------------------------------------------------------
+        // EXERCISE 7.1 LOGIC
+        // -------------------------------------------------------------
+        function renderEx1WordBank() {
+            const bank = document.getElementById('ex1-word-bank');
+            if (!bank) return;
+            bank.innerHTML = ex1Words.map(word => `
+                <button onclick="insertEx1Word('${word}')" 
+                        class="px-3 py-1 bg-white hover:bg-brand-100 border border-brand-200 text-brand-800 rounded-lg text-xs font-semibold shadow-sm transition-all hover:scale-105 active:scale-95">
+                    ${word}
+                </button>
+            `).join('');
+        }
+
+        function insertEx1Word(word) {
+            if (ex1Answered) return;
+            const input = document.getElementById('ex1-input');
+            if (input) {
+                input.value = word;
+                input.focus();
+            }
+        }
+
+        function renderEx1Question() {
+            ex1Answered = false;
+            const item = ex1Data[ex1CurrentIdx];
+            
+            // Progress
+            document.getElementById('ex1-progress-text').innerText = `Question ${ex1CurrentIdx + 1}/9`;
+            document.getElementById('ex1-progress-bar').style.width = `${((ex1CurrentIdx + 1) / 9) * 100}%`;
+
+            // Sentence
+            const sentenceEl = document.getElementById('ex1-sentence');
+            sentenceEl.innerHTML = item.text.replace('______', `<span class="inline-block border-b-2 border-brand-500 font-bold text-brand-700 px-2 min-w-[80px] text-center">?</span>`);
+
+            // Input & Buttons reset
+            const input = document.getElementById('ex1-input');
+            input.value = '';
+            input.disabled = false;
+            input.focus();
+
+            document.getElementById('ex1-check-btn').classList.remove('hidden');
+            document.getElementById('ex1-next-btn').classList.add('hidden');
+            
+            const feedback = document.getElementById('ex1-feedback');
+            feedback.className = 'hidden p-4 rounded-xl text-sm font-medium transition-all';
+            feedback.innerHTML = '';
+        }
+
+        function checkEx1Answer() {
+            if (ex1Answered) return;
+            const input = document.getElementById('ex1-input');
+            const userAns = input.value.trim().toLowerCase();
+            if (!userAns) {
+                showToast('Please type or select an answer first.', 'info');
+                return;
+            }
+
+            ex1Answered = true;
+            input.disabled = true;
+
+            const item = ex1Data[ex1CurrentIdx];
+            const isCorrect = userAns === item.answer.toLowerCase();
+
+            const feedback = document.getElementById('ex1-feedback');
+            feedback.classList.remove('hidden');
+
+            if (isCorrect) {
+                ex1Score++;
+                feedback.className = 'p-4 rounded-xl text-sm font-medium bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center space-x-2';
+                feedback.innerHTML = `<i class="fa-solid fa-circle-check text-lg text-emerald-600"></i> <span><b>Correct!</b> Excellent choice. "${item.answer}" fits perfectly!</span>`;
+            } else {
+                feedback.className = 'p-4 rounded-xl text-sm font-medium bg-rose-50 text-rose-800 border border-rose-200 flex items-start space-x-2';
+                feedback.innerHTML = `<i class="fa-solid fa-circle-xmark text-lg text-rose-600 mt-0.5"></i> <div><b>Incorrect.</b> Your answer was "<i>${userAns}</i>". The correct word is <b>"${item.answer}"</b>.</div>`;
+            }
+
+            document.getElementById('ex1-sentence').innerHTML = item.text.replace('______', `<span class="underline font-extrabold ${isCorrect ? 'text-emerald-600' : 'text-rose-600'}">${item.answer}</span>`);
+
+            document.getElementById('ex1-check-btn').classList.add('hidden');
+            
+            if (ex1CurrentIdx < ex1Data.length - 1) {
+                document.getElementById('ex1-next-btn').classList.remove('hidden');
+                document.getElementById('ex1-next-btn').classList.add('flex');
+            } else {
+                setTimeout(showEx1Result, 1500);
+            }
+        }
+
+        function nextEx1Question() {
+            if (ex1CurrentIdx < ex1Data.length - 1) {
+                ex1CurrentIdx++;
+                renderEx1Question();
+            } else {
+                showEx1Result();
+            }
+        }
+
+        function showEx1Result() {
+            document.getElementById('ex1-card').classList.add('hidden');
+            document.getElementById('ex1-result').classList.remove('hidden');
+            
+            const pct = Math.round((ex1Score / 9) * 100);
+            document.getElementById('ex1-score-display').innerText = `${ex1Score} / 9`;
+            document.getElementById('ex1-percentage-display').innerText = `${pct}% Correct`;
+        }
+
+        function resetEx1() {
+            ex1CurrentIdx = 0;
+            ex1Score = 0;
+            document.getElementById('ex1-result').classList.add('hidden');
+            document.getElementById('ex1-card').classList.remove('hidden');
+            renderEx1Question();
+        }
+
+        // -------------------------------------------------------------
+        // EXERCISE 7.2 LOGIC (Opposites)
+        // -------------------------------------------------------------
+        function renderEx2Question() {
+            ex2SelectedIdx = null;
+            const item = ex2Data[ex2CurrentIdx];
+
+            document.getElementById('ex2-progress-text').innerText = `Question ${ex2CurrentIdx + 1}/6`;
+            document.getElementById('ex2-progress-bar').style.width = `${((ex2CurrentIdx + 1) / 6) * 100}%`;
+
+            document.getElementById('ex2-question-text').innerText = item.question;
+
+            const optionsContainer = document.getElementById('ex2-options');
+            optionsContainer.innerHTML = item.options.map((opt, idx) => `
+                <button id="ex2-opt-${idx}" onclick="selectEx2Option(${idx})" 
+                        class="w-full text-left p-4 rounded-xl border border-slate-200 bg-white hover:border-indigo-300 hover:bg-indigo-50/30 transition-all font-medium text-slate-700 flex items-center justify-between group">
+                    <span>${String.fromCharCode(65 + idx)}. ${opt}</span>
+                    <span class="w-5 h-5 rounded-full border border-slate-300 group-hover:border-indigo-500 flex items-center justify-center text-xs"></span>
+                </button>
+            `).join('');
+
+            const checkBtn = document.getElementById('ex2-check-btn');
+            checkBtn.disabled = true;
+            checkBtn.classList.remove('hidden');
+
+            document.getElementById('ex2-next-btn').classList.add('hidden');
+
+            const feedback = document.getElementById('ex2-feedback');
+            feedback.className = 'hidden p-4 rounded-xl text-sm transition-all space-y-1';
+            feedback.innerHTML = '';
+        }
+
+        function selectEx2Option(idx) {
+            ex2SelectedIdx = idx;
+            ex2Data[ex2CurrentIdx].options.forEach((_, i) => {
+                const btn = document.getElementById(`ex2-opt-${i}`);
+                if (btn) {
+                    if (i === idx) {
+                        btn.className = "w-full text-left p-4 rounded-xl border-2 border-indigo-600 bg-indigo-50 font-semibold text-indigo-900 flex items-center justify-between shadow-sm";
+                    } else {
+                        btn.className = "w-full text-left p-4 rounded-xl border border-slate-200 bg-white opacity-75 font-medium text-slate-700 flex items-center justify-between";
+                    }
+                }
+            });
+
+            document.getElementById('ex2-check-btn').disabled = false;
+        }
+
+        function checkEx2Answer() {
+            if (ex2SelectedIdx === null) return;
+
+            const item = ex2Data[ex2CurrentIdx];
+            const isCorrect = ex2SelectedIdx === item.correct;
+
+            // Disable options
+            item.options.forEach((_, i) => {
+                const btn = document.getElementById(`ex2-opt-${i}`);
+                if (btn) btn.onclick = null;
+                if (i === item.correct) {
+                    btn.className = "w-full text-left p-4 rounded-xl border-2 border-emerald-500 bg-emerald-50 font-bold text-emerald-900 flex items-center justify-between";
+                } else if (i === ex2SelectedIdx && !isCorrect) {
+                    btn.className = "w-full text-left p-4 rounded-xl border-2 border-rose-500 bg-rose-50 font-semibold text-rose-900 flex items-center justify-between";
+                }
+            });
+
+            if (isCorrect) ex2Score++;
+
+            const feedback = document.getElementById('ex2-feedback');
+            feedback.classList.remove('hidden');
+            feedback.className = isCorrect 
+                ? 'p-4 rounded-xl text-sm bg-emerald-50 text-emerald-900 border border-emerald-200'
+                : 'p-4 rounded-xl text-sm bg-rose-50 text-rose-900 border border-rose-200';
+
+            feedback.innerHTML = `
+                <div class="font-bold flex items-center space-x-2">
+                    <i class="fa-solid ${isCorrect ? 'fa-circle-check text-emerald-600' : 'fa-circle-xmark text-rose-600'} text-base"></i>
+                    <span>${isCorrect ? 'Correct!' : 'Incorrect'}</span>
+                </div>
+                <div class="mt-1 text-slate-700">${item.explanation}</div>
+            `;
+
+            document.getElementById('ex2-check-btn').classList.add('hidden');
+
+            if (ex2CurrentIdx < ex2Data.length - 1) {
+                document.getElementById('ex2-next-btn').classList.remove('hidden');
+                document.getElementById('ex2-next-btn').classList.add('flex');
+            } else {
+                setTimeout(showEx2Result, 1500);
+            }
+        }
+
+        function nextEx2Question() {
+            if (ex2CurrentIdx < ex2Data.length - 1) {
+                ex2CurrentIdx++;
+                renderEx2Question();
+            } else {
+                showEx2Result();
+            }
+        }
+
+        function showEx2Result() {
+            document.getElementById('ex2-card').classList.add('hidden');
+            document.getElementById('ex2-result').classList.remove('hidden');
+
+            const pct = Math.round((ex2Score / 6) * 100);
+            document.getElementById('ex2-score-display').innerText = `${ex2Score} / 6`;
+            document.getElementById('ex2-percentage-display').innerText = `${pct}% Correct`;
+        }
+
+        function resetEx2() {
+            ex2CurrentIdx = 0;
+            ex2Score = 0;
+            document.getElementById('ex2-result').classList.add('hidden');
+            document.getElementById('ex2-card').classList.remove('hidden');
+            renderEx2Question();
+        }
+
+        // -------------------------------------------------------------
+        // WRITING CHALLENGE 7.4 LOGIC
+        // -------------------------------------------------------------
+        function selectWritingPrompt(promptNum) {
+            currentWritingPrompt = promptNum;
+            
+            // Tab highlight
+            for (let i = 1; i <= 4; i++) {
+                const tab = document.getElementById(`writing-tab-${i}`);
+                if (tab) {
+                    if (i === promptNum) {
+                        tab.className = "writing-tab px-4 py-3 rounded-xl border-2 border-emerald-600 bg-emerald-50 text-emerald-900 font-bold text-sm shadow-sm";
+                    } else {
+                        tab.className = "writing-tab px-4 py-3 rounded-xl border border-slate-200 text-left font-semibold text-sm transition-all hover:bg-slate-50 text-slate-700";
+                    }
+                }
+            }
+
+            const promptLabels = {
+                1: "Prompt 1: Describe yourself",
+                2: "Prompt 2: Describe your best friend",
+                3: "Prompt 3: Describe a neighbour",
+                4: "Prompt 4: Describe your ideal person"
+            };
+
+            document.getElementById('current-prompt-label').innerText = promptLabels[promptNum];
+
+            // Sample answer update
+            const sampleBox = document.getElementById('sample-answer-box');
+            if (sampleBox && !sampleBox.classList.contains('hidden')) {
+                document.getElementById('sample-answer-text').innerText = sampleAnswers[promptNum];
+            }
+        }
+
+        function updateWritingStats() {
+            const txt = document.getElementById('writing-textarea').value.trim();
+            const words = txt ? txt.split(/\s+/).length : 0;
+            document.getElementById('word-count').innerText = words;
+
+            // Auto-check items if words present in text
+            const lower = txt.toLowerCase();
+            document.getElementById('chk-hair').checked = lower.includes('hair') || lower.includes('auburn') || lower.includes('blonde') || lower.includes('curly') || lower.includes('straight');
+            document.getElementById('chk-face').checked = lower.includes('face') || lower.includes('eyes') || lower.includes('dimples') || lower.includes('wrinkles') || lower.includes('feature');
+            document.getElementById('chk-skin').checked = lower.includes('skin') || lower.includes('complexion') || lower.includes('pale') || lower.includes('tan') || lower.includes('freckles');
+            document.getElementById('chk-height').checked = lower.includes('height') || lower.includes('tall') || lower.includes('short') || lower.includes('medium');
+            document.getElementById('chk-build').checked = lower.includes('build') || lower.includes('slender') || lower.includes('slim') || lower.includes('muscular') || lower.includes('well-built');
+            document.getElementById('chk-gen').checked = lower.includes('appearance') || lower.includes('stunning') || lower.includes('elegant') || lower.includes('smart') || lower.includes('neat');
+            document.getElementById('chk-personality').checked = lower.includes('impression') || lower.includes('friendly') || lower.includes('cheerful') || lower.includes('kind');
+        }
+
+        function insertStarter(text) {
+            const textarea = document.getElementById('writing-textarea');
+            if (!textarea) return;
+            const current = textarea.value;
+            if (current.length > 0 && !current.endsWith(' ') && !current.endsWith('\n')) {
+                textarea.value += ' ' + text;
+            } else {
+                textarea.value += text;
+            }
+            textarea.focus();
+            updateWritingStats();
+            showToast('Sentence starter inserted!', 'info');
+        }
+
+        function toggleSampleAnswer() {
+            const box = document.getElementById('sample-answer-box');
+            if (!box) return;
+            if (box.classList.contains('hidden')) {
+                document.getElementById('sample-answer-text').innerText = sampleAnswers[currentWritingPrompt];
+                box.classList.remove('hidden');
+            } else {
+                box.classList.add('hidden');
+            }
+        }
+
+        function openClearModal() {
+            document.getElementById('modal-clear').classList.remove('hidden');
+        }
+
+        function closeClearModal() {
+            document.getElementById('modal-clear').classList.add('hidden');
+        }
+
+        function confirmClearWriting() {
+            document.getElementById('writing-textarea').value = '';
+            updateWritingStats();
+            closeClearModal();
+            showToast('Writing area cleared.', 'info');
+        }
+
+        function copyWritingText() {
+            const txt = document.getElementById('writing-textarea').value;
+            if (!txt.trim()) {
+                showToast('Writing box is empty!', 'warning');
+                return;
+            }
+            
+            // Clipboard fallback as specified in instructions
+            const temp = document.createElement('textarea');
+            temp.value = txt;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+
+            showToast('Text copied to clipboard!', 'success');
+        }
+
+        // -------------------------------------------------------------
+        // FINAL QUIZ LOGIC
+        // -------------------------------------------------------------
+        function renderQuizQuestion() {
+            quizSelectedIdx = null;
+            const item = quizData[quizCurrentIdx];
+
+            document.getElementById('quiz-progress-text').innerText = `Question ${quizCurrentIdx + 1}/20`;
+            document.getElementById('quiz-progress-bar').style.width = `${((quizCurrentIdx + 1) / 20) * 100}%`;
+
+            document.getElementById('quiz-category').innerText = `Topic: ${item.category}`;
+            document.getElementById('quiz-question-text').innerText = item.question;
+
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = item.options.map((opt, idx) => `
+                <button id="quiz-opt-${idx}" onclick="selectQuizOption(${idx})" 
+                        class="w-full text-left p-4 rounded-xl border border-slate-200 bg-white hover:border-amber-400 hover:bg-amber-50/30 transition-all font-medium text-slate-800 flex items-center justify-between group">
+                    <span>${String.fromCharCode(65 + idx)}. ${opt}</span>
+                    <span class="w-5 h-5 rounded-full border border-slate-300 group-hover:border-amber-500 flex items-center justify-center text-xs"></span>
+                </button>
+            `).join('');
+
+            const checkBtn = document.getElementById('quiz-check-btn');
+            checkBtn.disabled = true;
+            checkBtn.classList.remove('hidden');
+
+            document.getElementById('quiz-next-btn').classList.add('hidden');
+
+            const feedback = document.getElementById('quiz-feedback');
+            feedback.className = 'hidden p-4 rounded-xl text-sm transition-all space-y-1';
+            feedback.innerHTML = '';
+        }
+
+        function selectQuizOption(idx) {
+            quizSelectedIdx = idx;
+            quizData[quizCurrentIdx].options.forEach((_, i) => {
+                const btn = document.getElementById(`quiz-opt-${i}`);
+                if (btn) {
+                    if (i === idx) {
+                        btn.className = "w-full text-left p-4 rounded-xl border-2 border-amber-500 bg-amber-50 font-bold text-amber-900 flex items-center justify-between shadow-sm";
+                    } else {
+                        btn.className = "w-full text-left p-4 rounded-xl border border-slate-200 bg-white opacity-75 font-medium text-slate-700 flex items-center justify-between";
+                    }
+                }
+            });
+
+            document.getElementById('quiz-check-btn').disabled = false;
+        }
+
+        function checkQuizAnswer() {
+            if (quizSelectedIdx === null) return;
+
+            const item = quizData[quizCurrentIdx];
+            const isCorrect = quizSelectedIdx === item.correct;
+
+            item.options.forEach((_, i) => {
+                const btn = document.getElementById(`quiz-opt-${i}`);
+                if (btn) btn.onclick = null;
+                if (i === item.correct) {
+                    btn.className = "w-full text-left p-4 rounded-xl border-2 border-emerald-500 bg-emerald-50 font-bold text-emerald-900 flex items-center justify-between";
+                } else if (i === quizSelectedIdx && !isCorrect) {
+                    btn.className = "w-full text-left p-4 rounded-xl border-2 border-rose-500 bg-rose-50 font-semibold text-rose-900 flex items-center justify-between";
+                }
+            });
+
+            if (isCorrect) quizScore++;
+
+            const feedback = document.getElementById('quiz-feedback');
+            feedback.classList.remove('hidden');
+            feedback.className = isCorrect 
+                ? 'p-4 rounded-xl text-sm bg-emerald-50 text-emerald-900 border border-emerald-200'
+                : 'p-4 rounded-xl text-sm bg-rose-50 text-rose-900 border border-rose-200';
+
+            feedback.innerHTML = `
+                <div class="font-bold flex items-center space-x-2">
+                    <i class="fa-solid ${isCorrect ? 'fa-circle-check text-emerald-600' : 'fa-circle-xmark text-rose-600'} text-base"></i>
+                    <span>${isCorrect ? 'Correct!' : 'Incorrect'}</span>
+                </div>
+                <div class="mt-1 text-slate-700">${item.explanation}</div>
+            `;
+
+            document.getElementById('quiz-check-btn').classList.add('hidden');
+
+            if (quizCurrentIdx < quizData.length - 1) {
+                document.getElementById('quiz-next-btn').classList.remove('hidden');
+                document.getElementById('quiz-next-btn').classList.add('flex');
+            } else {
+                setTimeout(showQuizResultsScreen, 1500);
+            }
+        }
+
+        function nextQuizQuestion() {
+            if (quizCurrentIdx < quizData.length - 1) {
+                quizCurrentIdx++;
+                renderQuizQuestion();
+            } else {
+                showQuizResultsScreen();
+            }
+        }
+
+        function showQuizResultsScreen() {
+            document.getElementById('quiz-card').classList.add('hidden');
+            document.getElementById('quiz-result-screen').classList.remove('hidden');
+
+            const pct = Math.round((quizScore / 20) * 100);
+            document.getElementById('final-score-display').innerText = `${quizScore} / 20`;
+            document.getElementById('final-percentage-display').innerText = `${pct}% Accuracy`;
+
+            const badge = document.getElementById('final-grade-badge');
+            const desc = document.getElementById('final-grade-description');
+            const iconContainer = document.getElementById('quiz-result-icon');
+
+            if (quizScore >= 18) {
+                badge.className = "inline-block px-5 py-2 rounded-full font-bold text-base bg-emerald-100 text-emerald-800 border border-emerald-300";
+                badge.innerText = "18–20: Excellent!";
+                desc.innerText = "Outstanding! You have complete command over Unit 7 appearance vocabulary.";
+                iconContainer.className = "w-24 h-24 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner bg-emerald-100 text-emerald-600";
+            } else if (quizScore >= 15) {
+                badge.className = "inline-block px-5 py-2 rounded-full font-bold text-base bg-blue-100 text-blue-800 border border-blue-300";
+                badge.innerText = "15–17: Very Good!";
+                desc.innerText = "Great job! You have a solid understanding of physical trait descriptions.";
+                iconContainer.className = "w-24 h-24 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner bg-blue-100 text-blue-600";
+            } else if (quizScore >= 12) {
+                badge.className = "inline-block px-5 py-2 rounded-full font-bold text-base bg-amber-100 text-amber-800 border border-amber-300";
+                badge.innerText = "12–14: Good";
+                desc.innerText = "Good effort! Review a few specific items like complexions and '-ish' expressions.";
+                iconContainer.className = "w-24 h-24 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner bg-amber-100 text-amber-600";
+            } else {
+                badge.className = "inline-block px-5 py-2 rounded-full font-bold text-base bg-rose-100 text-rose-800 border border-rose-300";
+                badge.innerText = "0–11: Review Unit 7";
+                desc.innerText = "You should review the Unit 7 vocabulary topics again and retry the practice exercises.";
+                iconContainer.className = "w-24 h-24 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner bg-rose-100 text-rose-600";
+            }
+        }
+
+        function resetQuiz() {
+            quizCurrentIdx = 0;
+            quizScore = 0;
+            document.getElementById('quiz-result-screen').classList.add('hidden');
+            document.getElementById('quiz-card').classList.remove('hidden');
+            renderQuizQuestion();
+        }
+
+        // -------------------------------------------------------------
+        // GENERAL UTILITIES
+        // -------------------------------------------------------------
+        function showToast(msg, type = 'success') {
+            const toast = document.getElementById('toast');
+            const messageEl = document.getElementById('toast-message');
+            const iconEl = document.getElementById('toast-icon');
+
+            if (!toast || !messageEl) return;
+
+            messageEl.innerText = msg;
+            if (type === 'success') {
+                iconEl.className = "fa-solid fa-circle-check text-emerald-400";
+            } else if (type === 'warning') {
+                iconEl.className = "fa-solid fa-triangle-exclamation text-amber-400";
+            } else {
+                iconEl.className = "fa-solid fa-circle-info text-blue-400";
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 2500);
+        }
+
+        // -------------------------------------------------------------
+        // APPLICATION INITIALIZATION ON LOAD
+        // -------------------------------------------------------------
+        window.onload = function() {
+            renderEx1WordBank();
+            renderEx1Question();
+            renderEx2Question();
+            selectWritingPrompt(1);
+            renderQuizQuestion();
+            navigateTo('menu');
+        };
+    </script>
+</body>
+</html>
+
